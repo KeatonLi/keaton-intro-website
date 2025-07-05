@@ -6,9 +6,9 @@
         <router-link to="/" class="logo">Keaton</router-link>
         <ul class="nav-menu">
           <li><router-link to="/" class="nav-link" active-class="active">首页</router-link></li>
-          <li><router-link to="/about" class="nav-link" active-class="active">关于我</router-link></li>
           <li><router-link to="/portfolio" class="nav-link" active-class="active">作品集</router-link></li>
           <li><router-link to="/blog" class="nav-link" active-class="active">博客</router-link></li>
+                    <li><router-link to="/about" class="nav-link" active-class="active">关于我</router-link></li>
         </ul>
       </div>
     </nav>
