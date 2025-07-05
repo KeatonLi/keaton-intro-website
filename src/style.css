@@ -881,9 +881,11 @@ body {
 
 /* 博客 Markdown 样式 - 现代化设计 */
 .blog-content {
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--text-primary);
-  font-size: 1.1rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  max-width: none;
 }
 
 /* 标题样式 */
@@ -942,8 +944,10 @@ body {
 
 /* 段落和文本 */
 .blog-content p {
-  margin: var(--space-lg) 0;
-  line-height: 1.8;
+  margin: 1.75rem 0;
+  line-height: 1.85;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .blog-content ul,
@@ -1011,23 +1015,28 @@ body {
 
 /* 引用块 */
 .blog-content blockquote {
-  margin: var(--space-xl) 0;
-  padding: var(--space-xl) var(--space-2xl);
-  border-left: 4px solid var(--primary-blue);
-  background: var(--blue-50);
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: 2.5rem 0;
+  padding: 2rem 2.5rem;
+  border-left: 5px solid var(--primary-blue);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
+  border-radius: 0 20px 20px 0;
   position: relative;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.08);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  border-left: 5px solid var(--primary-blue);
 }
 
 .blog-content blockquote::before {
   content: '"';
   position: absolute;
-  top: var(--space-md);
-  left: var(--space-md);
+  top: 1rem;
+  left: 1rem;
   font-size: 3rem;
   color: var(--primary-blue);
   opacity: 0.3;
-  font-family: serif;
+  font-family: Georgia, serif;
+  line-height: 1;
 }
 
 .blog-content blockquote > p {
@@ -1053,13 +1062,24 @@ body {
 
 /* 代码块容器 */
 .blog-content pre {
-  background: var(--gray-900);
-  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+  border-radius: 16px;
   overflow-x: auto;
-  margin: var(--space-xl) 0;
+  margin: 2.5rem 0;
   position: relative;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--gray-700);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-content pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--blue-600), var(--accent-blue));
+  border-radius: 16px 16px 0 0;
 }
 
 /* Prism Tomorrow Night 主题样式 */

@@ -13,7 +13,7 @@
     
     <div class="post-content blog-content" v-html="renderedContent"></div>
     
-    <footer class="post-footer">
+    <footer class="post-footer" v-if="showBackButton">
       <div class="post-navigation">
         <button @click="$emit('back')" class="btn btn-outline">
           ← 返回博客列表
@@ -32,6 +32,10 @@ export default {
     post: {
       type: Object,
       required: true
+    },
+    showBackButton: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['back'],
@@ -54,37 +58,78 @@ export default {
 
 <style scoped>
 .blog-post {
-  max-width: 900px;
+  max-width: 950px;
   margin: 0 auto;
-  padding: var(--space-3xl);
-  background: var(--bg-primary);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--gray-200);
+  padding: 4rem 3.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+  border-radius: 32px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(25px);
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-post::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 15% 25%, rgba(102, 126, 234, 0.02) 0%, transparent 50%),
+              radial-gradient(circle at 85% 75%, rgba(118, 75, 162, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blog-post > * {
+  position: relative;
+  z-index: 1;
 }
 
 .post-header {
-  margin-bottom: var(--space-3xl);
-  padding-bottom: var(--space-lg);
-  border-bottom: 2px solid var(--gray-100);
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid var(--gray-100);
+  text-align: center;
+  position: relative;
+}
+
+.post-header::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--blue-600), var(--accent-blue));
+  border-radius: 2px;
 }
 
 .post-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: var(--space-lg);
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .post-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-lg);
+  gap: 2rem;
   align-items: center;
+  justify-content: center;
   color: var(--text-tertiary);
   font-size: 1rem;
+  font-weight: 500;
 }
 
 .post-date,
@@ -98,19 +143,22 @@ export default {
 }
 
 .tag {
-  background: var(--blue-50);
-  color: var(--blue-700);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-lg);
-  font-size: 0.8rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  color: var(--primary-blue);
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
   font-weight: 600;
-  border: 1px solid var(--blue-200);
-  transition: all var(--transition-fast);
+  border: 1px solid rgba(102, 126, 234, 0.15);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
 .tag:hover {
-  background: var(--blue-100);
-  border-color: var(--blue-300);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.25);
 }
 
 /* post-content 样式由全局 blog-content 类提供 */
@@ -130,37 +178,57 @@ export default {
 }
 
 .btn {
-  background: var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--blue-600) 100%);
   color: white;
   border: none;
-  padding: var(--space-md) var(--space-xl);
-  border-radius: var(--radius-xl);
+  padding: 1rem 2rem;
+  border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.95rem;
-  transition: all var(--transition-normal);
+  font-size: 1rem;
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  box-shadow: var(--shadow-md);
+  gap: 0.75rem;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn:hover {
-  background: var(--blue-700);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-800) 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
 }
 
 .btn-outline {
   background: transparent;
   color: var(--primary-blue);
   border: 2px solid var(--primary-blue);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
 }
 
 .btn-outline:hover {
-  background: var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--blue-600) 100%);
   color: white;
+  border-color: var(--primary-blue);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
 }
 
 @media (max-width: 768px) {
