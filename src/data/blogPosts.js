@@ -1,7 +1,60 @@
-import matter from 'gray-matter';
-
 // 动态导入所有markdown文件
 const markdownFiles = import.meta.glob('../blog/posts/*.md', { as: 'raw', eager: true });
+
+// 自定义 frontmatter 解析器（不依赖 Buffer）
+function parseFrontmatter(content) {
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  const match = content.match(frontmatterRegex);
+  
+  if (!match) {
+    return {
+      data: {},
+      content: content
+    };
+  }
+  
+  const frontmatterText = match[1];
+  const markdownContent = match[2];
+  
+  // 简单的 YAML 解析（支持基本的键值对）
+  const data = {};
+  const lines = frontmatterText.split('\n');
+  
+  for (const line of lines) {
+    const trimmedLine = line.trim();
+    if (!trimmedLine || trimmedLine.startsWith('#')) continue;
+    
+    if (trimmedLine.includes(':')) {
+      const [key, ...valueParts] = trimmedLine.split(':');
+      let value = valueParts.join(':').trim();
+      
+      // 移除引号
+      if ((value.startsWith('"') && value.endsWith('"')) || 
+          (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
+      
+      // 处理数组（简单的方括号格式）
+      if (value.startsWith('[') && value.endsWith(']')) {
+        const arrayContent = value.slice(1, -1);
+        if (arrayContent.trim()) {
+          data[key.trim()] = arrayContent.split(',').map(item => 
+            item.trim().replace(/^["']|["']$/g, '')
+          );
+        } else {
+          data[key.trim()] = [];
+        }
+      } else {
+        data[key.trim()] = value;
+      }
+    }
+  }
+  
+  return {
+    data,
+    content: markdownContent
+  };
+}
 
 // 解析markdown文件并提取数据
 function parseBlogPosts() {
@@ -9,8 +62,8 @@ function parseBlogPosts() {
   
   for (const [path, content] of Object.entries(markdownFiles)) {
     try {
-      // 使用gray-matter解析frontmatter
-      const { data: frontmatter, content: markdownContent } = matter(content);
+      // 使用自定义解析器解析frontmatter
+      const { data: frontmatter, content: markdownContent } = parseFrontmatter(content);
       
       // 从文件路径提取文件名作为ID
       const fileName = path.split('/').pop().replace('.md', '');
