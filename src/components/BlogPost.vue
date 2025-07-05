@@ -11,7 +11,7 @@
       </div>
     </header>
     
-    <div class="post-content" v-html="renderedContent"></div>
+    <div class="post-content blog-content" v-html="renderedContent"></div>
     
     <footer class="post-footer">
       <div class="post-navigation">
@@ -54,35 +54,37 @@ export default {
 
 <style scoped>
 .blog-post {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem;
-  background: var(--bg-white);
-  border-radius: 1rem;
-  box-shadow: var(--shadow);
+  padding: var(--space-3xl);
+  background: var(--bg-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
 }
 
 .post-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--bg-light);
+  margin-bottom: var(--space-3xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 2px solid var(--gray-100);
 }
 
 .post-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary-blue);
-  margin-bottom: 1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
   line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
 .post-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--space-lg);
   align-items: center;
-  color: var(--text-gray);
-  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-size: 1rem;
 }
 
 .post-date,
@@ -92,29 +94,33 @@ export default {
 
 .post-tags {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-sm);
 }
 
 .tag {
-  background: var(--bg-light);
-  color: var(--primary-blue);
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-lg);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
+  border: 1px solid var(--blue-200);
+  transition: all var(--transition-fast);
 }
 
+.tag:hover {
+  background: var(--blue-100);
+  border-color: var(--blue-300);
+}
+
+/* post-content 样式由全局 blog-content 类提供 */
 .post-content {
-  line-height: 1.8;
-  color: var(--text-dark);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-3xl);
 }
-
-/* Markdown 样式已移至全局样式文件 */
 
 .post-footer {
-  padding-top: 1rem;
-  border-top: 2px solid var(--bg-light);
+  padding-top: var(--space-lg);
+  border-top: 2px solid var(--gray-100);
 }
 
 .post-navigation {
@@ -123,10 +129,44 @@ export default {
   align-items: center;
 }
 
+.btn {
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--blue-700);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+}
+
+.btn-outline:hover {
+  background: var(--primary-blue);
+  color: white;
+}
+
 @media (max-width: 768px) {
   .blog-post {
-    padding: 1rem;
-    margin: 1rem;
+    padding: var(--space-xl);
+    margin: 0 var(--space-md);
   }
   
   .post-title {
@@ -136,7 +176,11 @@ export default {
   .post-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-sm);
+  }
+  
+  .post-content {
+    font-size: 1rem;
   }
 }
 </style>
