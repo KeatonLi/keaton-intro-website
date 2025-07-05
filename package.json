@@ -12,7 +12,6 @@
     "@mdit-vue/plugin-component": "^2.1.4",
     "@mdit-vue/plugin-frontmatter": "^2.1.4",
     "@mdit-vue/shared": "^2.1.4",
-    "buffer": "^6.0.3",
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0",
     "markdown-it-container": "^4.0.0",
@@ -22,7 +21,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
     "vite": "^4.4.5"
-  },
+    },
   "keywords": [
     "portfolio",
     "vue",
