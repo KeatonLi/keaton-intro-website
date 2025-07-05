@@ -5,16 +5,24 @@
       <div class="nav-container">
         <a href="#" class="logo">Keaton</a>
         <ul class="nav-menu">
-          <li><a href="#home" class="nav-link" :class="{ active: activeSection === 'home' }" @click="scrollToSection('home')">首页</a></li>
-          <li><a href="#about" class="nav-link" :class="{ active: activeSection === 'about' }" @click="scrollToSection('about')">关于我</a></li>
-          <li><a href="#portfolio" class="nav-link" :class="{ active: activeSection === 'portfolio' }" @click="scrollToSection('portfolio')">作品集</a></li>
-          <li><a href="#gallery" class="nav-link" :class="{ active: activeSection === 'gallery' }" @click="scrollToSection('gallery')">图片展示</a></li>
+          <li><a href="#home" class="nav-link" :class="{ active: activeSection === 'home' && currentView === 'home' }" @click="showHomeView">首页</a></li>
+          <li><a href="#about" class="nav-link" :class="{ active: activeSection === 'about' && currentView === 'home' }" @click="scrollToSection('about')">关于我</a></li>
+          <li><a href="#portfolio" class="nav-link" :class="{ active: activeSection === 'portfolio' && currentView === 'home' }" @click="scrollToSection('portfolio')">作品集</a></li>
+          <li><a href="#gallery" class="nav-link" :class="{ active: activeSection === 'gallery' && currentView === 'home' }" @click="scrollToSection('gallery')">图片展示</a></li>
+          <li><a href="#blog" class="nav-link" :class="{ active: currentView === 'blog' }" @click="showBlogView">博客</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- 主要内容 -->
     <main class="main-content">
+      <!-- 博客视图 -->
+      <div v-if="currentView === 'blog'" class="blog-view">
+        <Blog />
+      </div>
+      
+      <!-- 首页视图 -->
+      <div v-else class="home-view">
       <!-- 英雄区域 -->
       <section id="home" class="hero">
         <div class="container">
@@ -146,6 +154,7 @@
           </div>
         </div>
       </section>
+      </div>
     </main>
 
     <!-- 页脚 -->
@@ -158,10 +167,16 @@
 </template>
 
 <script>
+import Blog from './components/Blog.vue'
+
 export default {
   name: 'App',
+  components: {
+    Blog
+  },
   data() {
     return {
+      currentView: 'home', // 'home' | 'blog'
       activeSection: 'home',
       galleryImages: [
         {
@@ -214,7 +229,29 @@ export default {
     window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
+    showHomeView() {
+      this.currentView = 'home'
+      this.scrollToSection('home')
+    },
+    
+    showBlogView() {
+      this.currentView = 'blog'
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    },
+    
     scrollToSection(sectionId) {
+      if (this.currentView !== 'home') {
+        this.currentView = 'home'
+        // 等待DOM更新后再滚动
+        this.$nextTick(() => {
+          this.scrollToElement(sectionId)
+        })
+      } else {
+        this.scrollToElement(sectionId)
+      }
+    },
+    
+    scrollToElement(sectionId) {
       const element = document.getElementById(sectionId)
       if (element) {
         const offsetTop = element.offsetTop - 80 // 考虑导航栏高度
@@ -226,6 +263,9 @@ export default {
     },
     
     handleScroll() {
+      // 只在首页视图时更新活动区域
+      if (this.currentView !== 'home') return
+      
       const sections = ['home', 'about', 'portfolio', 'gallery']
       const scrollPosition = window.scrollY + 100
       

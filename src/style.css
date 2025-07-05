@@ -19,10 +19,12 @@
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   color: var(--text-dark);
   background: var(--bg-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -253,5 +255,390 @@ body {
   
   .card {
     padding: 1.5rem;
+  }
+}
+
+/* 博客 Markdown 样式 - VitePress 风格 */
+.blog-content {
+  line-height: 1.7;
+  color: #213547;
+  font-size: 16px;
+}
+
+/* 标题样式 */
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  margin: 2rem 0 1rem 0;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #213547;
+  position: relative;
+}
+
+.blog-content h1 {
+  font-size: 2.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.3rem;
+}
+
+.blog-content h2 {
+  font-size: 1.875rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.3rem;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+}
+
+.blog-content h4 {
+  font-size: 1.25rem;
+}
+
+.blog-content h5 {
+  font-size: 1.125rem;
+}
+
+.blog-content h6 {
+  font-size: 1rem;
+}
+
+/* 段落和文本 */
+.blog-content p {
+  margin: 1rem 0;
+  line-height: 1.7;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin: 0.25rem 0;
+}
+
+.blog-content li > p {
+  margin: 0.25rem 0;
+}
+
+/* 链接样式 */
+.blog-content a {
+  color: #646cff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s;
+}
+
+.blog-content a:hover {
+  color: #747bff;
+}
+
+/* 强调和斜体 */
+.blog-content strong {
+  font-weight: 600;
+  color: #213547;
+}
+
+.blog-content em {
+  font-style: italic;
+}
+
+/* 分隔线 */
+.blog-content hr {
+  margin: 2rem 0;
+  border: none;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+/* 图片 */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* 引用块 */
+.blog-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0 1.5rem;
+  border-left: 4px solid #646cff;
+  background: #f6f8fa;
+  border-radius: 0 6px 6px 0;
+  color: #6a737d;
+}
+
+.blog-content blockquote > p {
+  margin: 1rem 0;
+}
+
+/* 行内代码 */
+.blog-content code {
+  background: #f6f8fa;
+  color: #e74c3c;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: 0.875em;
+  font-weight: 500;
+}
+
+/* 代码块容器 */
+.blog-content pre {
+  background: #1e1e1e;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+/* Prism Tomorrow Night 主题样式 */
+.blog-content pre[class*="language-"],
+.blog-content code[class*="language-"] {
+  color: #ccc;
+  background: none;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+.blog-content pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+.blog-content :not(pre) > code[class*="language-"],
+.blog-content pre[class*="language-"] {
+  background: #2d2d2d;
+}
+
+.blog-content :not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+}
+
+.blog-content .token.comment,
+.blog-content .token.block-comment,
+.blog-content .token.prolog,
+.blog-content .token.doctype,
+.blog-content .token.cdata {
+  color: #999;
+}
+
+.blog-content .token.punctuation {
+  color: #ccc;
+}
+
+.blog-content .token.tag,
+.blog-content .token.attr-name,
+.blog-content .token.namespace,
+.blog-content .token.deleted {
+  color: #e2777a;
+}
+
+.blog-content .token.function-name {
+  color: #6196cc;
+}
+
+.blog-content .token.boolean,
+.blog-content .token.number,
+.blog-content .token.function {
+  color: #f08d49;
+}
+
+.blog-content .token.property,
+.blog-content .token.class-name,
+.blog-content .token.constant,
+.blog-content .token.symbol {
+  color: #f8c555;
+}
+
+.blog-content .token.selector,
+.blog-content .token.important,
+.blog-content .token.atrule,
+.blog-content .token.keyword,
+.blog-content .token.builtin {
+  color: #cc99cd;
+}
+
+.blog-content .token.string,
+.blog-content .token.char,
+.blog-content .token.attr-value,
+.blog-content .token.regex,
+.blog-content .token.variable {
+  color: #7ec699;
+}
+
+.blog-content .token.operator,
+.blog-content .token.entity,
+.blog-content .token.url {
+  color: #67cdcc;
+}
+
+.blog-content .token.important,
+.blog-content .token.bold {
+  font-weight: bold;
+}
+
+.blog-content .token.italic {
+  font-style: italic;
+}
+
+.blog-content .token.entity {
+  cursor: help;
+}
+
+.blog-content .token.inserted {
+  color: green;
+}
+
+.blog-content pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  display: block;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Prism 代码高亮主题覆盖 */
+.blog-content pre[class*="language-"] {
+  background: #1e1e1e;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  overflow: auto;
+}
+
+.blog-content code[class*="language-"],
+.blog-content pre[class*="language-"] {
+  color: #d4d4d4;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 表格样式 */
+.blog-content .table-container {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.blog-content th,
+.blog-content td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.blog-content th {
+  background: #f6f8fa;
+  color: #24292f;
+  font-weight: 600;
+  border-bottom: 2px solid #d1d9e0;
+}
+
+.blog-content tr:last-child td {
+  border-bottom: none;
+}
+
+/* 自定义容器样式 */
+.blog-content .custom-container {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  border-left: 4px solid;
+}
+
+.blog-content .custom-container-title {
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blog-content .custom-container.tip {
+  background: #f0f9ff;
+  border-left-color: #0ea5e9;
+  color: #0c4a6e;
+}
+
+.blog-content .custom-container.warning {
+  background: #fffbeb;
+  border-left-color: #f59e0b;
+  color: #92400e;
+}
+
+.blog-content .custom-container.danger {
+  background: #fef2f2;
+  border-left-color: #ef4444;
+  color: #991b1b;
+}
+
+.blog-content .custom-container.info {
+  background: #f0f9ff;
+  border-left-color: #3b82f6;
+  color: #1e40af;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .blog-content {
+    font-size: 14px;
+  }
+  
+  .blog-content h1 {
+    font-size: 1.875rem;
+  }
+  
+  .blog-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .blog-content h3 {
+    font-size: 1.25rem;
+  }
+  
+  .blog-content pre code {
+    padding: 1rem;
+    font-size: 13px;
+  }
+  
+  .blog-content .custom-container {
+    padding: 0.75rem 1rem;
+  }
+  
+  .blog-content th,
+  .blog-content td {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
   }
 }
