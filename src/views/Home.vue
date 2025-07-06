@@ -3,7 +3,7 @@
     <!-- 英雄区域 -->
     <section class="hero">
       <div class="container">
-        <h1>你好，我是 Keaton</h1>
+        <h1>你好，我是 Keaton 黎博凯</h1>
         <p>一名充满热情的 Java 工程师，专注于构建高质量的软件解决方案</p>
         <div class="hero-buttons">
           <router-link to="/portfolio" class="btn btn-primary">查看作品</router-link>

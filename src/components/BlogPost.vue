@@ -2,15 +2,15 @@
   <div class="blog-post-container">
     <!-- 目录侧边栏 -->
     <aside class="table-of-contents" :class="{ 'toc-visible': tocVisible }">
-      <div class="toc-header">
+      <div class="toc-header" @click="toggleToc">
         <h3 class="toc-title">📋 文章目录</h3>
-        <button class="toc-toggle" @click="toggleToc">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+        <button class="toc-toggle" :class="{ collapsed: !tocVisible }">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
       </div>
-      <nav class="toc-nav" v-if="tableOfContents.length > 0">
+      <nav class="toc-nav" :class="{ collapsed: !tocVisible }" v-if="tableOfContents.length > 0">
         <ul class="toc-list">
           <li 
             v-for="(item, index) in tableOfContents" 
@@ -197,7 +197,8 @@ export default {
   margin: 0 auto;
   gap: 2rem;
   padding: 2rem;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* 目录侧边栏 */
@@ -209,12 +210,11 @@ export default {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(20px);
-  position: sticky;
-  top: 2rem;
-  height: fit-content;
-  max-height: calc(100vh - 4rem);
+  height: calc(100vh - 4rem);
   overflow-y: auto;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .toc-header {
@@ -225,6 +225,12 @@ export default {
   align-items: center;
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
   border-radius: 16px 16px 0 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toc-header:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
 }
 
 .toc-title {
@@ -241,15 +247,45 @@ export default {
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 8px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .toc-toggle:hover {
   background: rgba(102, 126, 234, 0.1);
 }
 
+.toc-toggle svg {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toc-toggle.collapsed svg {
+  transform: rotate(-90deg);
+}
+
+.toc-toggle:active {
+  transform: scale(0.95);
+}
+
 .toc-nav {
   padding: 1rem 0;
+  flex: 1;
+  overflow-y: auto;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toc-nav.collapsed {
+  flex: 0;
+  min-height: 0;
+  padding: 0;
+  opacity: 0;
+  transform: translateY(-15px) scale(0.95);
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .toc-list {
@@ -313,7 +349,8 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(25px);
   position: relative;
-  overflow: hidden;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
 }
 
 .blog-post::before {
