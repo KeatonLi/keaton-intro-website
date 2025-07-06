@@ -16,13 +16,13 @@
         
         <div class="grid grid-3">
           <div class="card fade-in">
-            <div style="height: 200px; background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue)); border-radius: 0.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🏢</div>
-            <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">企业管理系统</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1rem;">基于 Spring Boot 开发的企业级管理系统，支持用户管理、权限控制、数据统计等功能。</p>
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-              <span style="background: var(--bg-light); color: var(--primary-blue); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem;">Spring Boot</span>
-              <span style="background: var(--bg-light); color: var(--primary-blue); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem;">MySQL</span>
-              <span style="background: var(--bg-light); color: var(--primary-blue); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem;">Vue.js</span>
+            <div class="project-image project-image-enterprise">🏢</div>
+            <h3 class="project-title">企业管理系统</h3>
+            <p class="project-description">基于 Spring Boot 开发的企业级管理系统，支持用户管理、权限控制、数据统计等功能。</p>
+            <div class="tech-tags-container">
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Vue.js</span>
             </div>
             <div class="project-features">
               <h4>核心功能：</h4>
@@ -56,21 +56,21 @@
           </div>
           
           <div class="card fade-in">
-            <div style="height: 200px; background: linear-gradient(135deg, var(--accent-blue), var(--light-blue)); border-radius: 0.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">📊</div>
-            <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">数据分析平台</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1rem;">实时数据处理和分析平台，提供数据可视化、报表生成、预警系统等功能。</p>
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-              <span style="background: var(--bg-light); color: var(--primary-blue); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem;">Apache Kafka</span>
-              <span style="background: var(--bg-light); color: var(--primary-blue); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem;">Elasticsearch</span>
-              <span style="background: var(--bg-light); color: var(--primary-blue); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.875rem;">Docker</span>
+            <div class="project-image project-image-microservice">🌐</div>
+            <h3 class="project-title">微服务架构</h3>
+            <p class="project-description">基于 Spring Cloud 的微服务架构，实现服务治理、配置管理、链路追踪等功能。</p>
+            <div class="tech-tags-container">
+              <span class="tech-tag">Spring Cloud</span>
+              <span class="tech-tag">Nacos</span>
+              <span class="tech-tag">Gateway</span>
             </div>
             <div class="project-features">
-              <h4>核心能力：</h4>
+              <h4>技术特点：</h4>
               <ul>
-                <li>实时流数据处理</li>
-                <li>多维度数据分析</li>
-                <li>智能预警机制</li>
-                <li>可视化图表展示</li>
+                <li>服务注册与发现</li>
+                <li>配置中心管理</li>
+                <li>API网关路由</li>
+                <li>分布式链路追踪</li>
               </ul>
             </div>
           </div>

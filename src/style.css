@@ -1,3 +1,5 @@
+/* 页面专用样式已合并到此文件 */
+
 /* 全局样式 */
 :root {
   /* 主色调 - 更现代的蓝色系 */
@@ -1605,4 +1607,487 @@ body {
 :focus-visible {
   outline: 2px solid var(--blue-500);
   outline-offset: 2px;
+}
+
+/* ========================================
+   页面专用样式
+   ======================================== */
+
+/* Home页面专用样式 */
+
+/* 英雄区域 */
+.home-page .hero {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+  color: white;
+  padding: 6rem 0 4rem;
+  text-align: center;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.home-page .hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.home-page .hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-page .hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 个人介绍卡片 */
+.home-page .intro-card-title {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.home-page .intro-card-text {
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.home-page .intro-card-text:last-child {
+  margin-bottom: 0;
+}
+
+/* 特色卡片 */
+.home-page .feature-cards {
+  margin-top: 3rem;
+}
+
+.home-page .feature-card {
+  text-align: center;
+}
+
+.home-page .feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home-page .feature-title {
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.home-page .feature-description {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+/* 技术栈区域 */
+.home-page .section-white {
+  background: var(--bg-white);
+}
+
+.home-page .tech-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.home-page .tech-category h3 {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.home-page .tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.home-page .tech-tag {
+  background: var(--bg-light);
+  color: var(--primary-blue);
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.home-page .tech-tag:hover {
+  background: var(--primary-blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* 工具类 */
+.home-page .text-center {
+  text-align: center;
+}
+
+/* About页面专用样式 */
+
+/* About 页面样式 */
+.about-hero {
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+  color: white;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.about-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 通用样式 */
+.section-white {
+  background: var(--bg-white);
+}
+
+/* 技能卡片样式 */
+.skill-card-title {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.skill-card-text {
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+}
+
+.skill-list-item {
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.skill-list-bullet {
+  position: absolute;
+  left: 0;
+  color: var(--primary-blue);
+}
+
+/* 页面标题区域 */
+.about-page .page-header {
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+  color: white;
+  padding: 4rem 0 2rem;
+  text-align: center;
+}
+
+.about-page .page-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* 技能评估 */
+.about-page .skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.about-page .skill-name {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.about-page .skill-level {
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.about-page .skill-bar {
+  height: 8px;
+  background: var(--bg-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.about-page .skill-progress {
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+  transition: width 1s ease;
+  border-radius: 4px;
+}
+
+/* 故事内容 */
+.about-page .story-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about-page .story-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.about-page .story-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.about-page .story-icon {
+  font-size: 3rem;
+  min-width: 4rem;
+  text-align: center;
+}
+
+.about-page .story-text h3 {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.about-page .story-text p {
+  color: var(--text-gray);
+  line-height: 1.6;
+}
+
+/* 技能网格 */
+.about-page .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.about-page .skill-item {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.about-page .skill-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Portfolio页面专用样式 */
+
+/* 页面标题区域 */
+.portfolio-page .page-header {
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+  color: white;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.portfolio-page .page-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.portfolio-page .page-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 项目卡片样式 */
+.project-image {
+  height: 200px;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3rem;
+}
+
+.project-image-enterprise {
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+}
+
+.project-image-analytics {
+  background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+}
+
+.project-image-microservice {
+  background: linear-gradient(135deg, var(--light-blue), var(--accent-blue));
+}
+
+.project-title {
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+}
+
+.tech-tags-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tech-tag {
+  background: var(--bg-light);
+  color: var(--primary-blue);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+/* 项目特性 */
+.portfolio-page .project-features {
+  margin-top: 1rem;
+}
+
+.portfolio-page .project-features h4 {
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.portfolio-page .project-features ul {
+  color: var(--text-gray);
+  padding-left: 1rem;
+}
+
+.portfolio-page .project-features li {
+  margin-bottom: 0.25rem;
+}
+
+/* 图片展示区域 */
+.portfolio-page .gallery-image {
+  height: 250px;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 4rem;
+}
+
+.portfolio-page .gallery-title {
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-page .gallery-description {
+  color: var(--text-gray);
+}
+
+/* 技术成就时间线 */
+.portfolio-page .achievements-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.portfolio-page .achievements-timeline::before {
+  content: '';
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+}
+
+.portfolio-page .achievement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-left: 4rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .home-page .hero {
+    padding: 4rem 0 3rem;
+    min-height: 60vh;
+  }
+  
+  .home-page .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .home-page .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .home-page .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-page .hero-buttons .btn {
+    width: 200px;
+  }
+  
+  .home-page .tech-stack {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .home-page .feature-cards {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .home-page .intro-card-title {
+    font-size: 1.25rem;
+  }
+  
+  .home-page .feature-icon {
+    font-size: 2.5rem;
+  }
 }

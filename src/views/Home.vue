@@ -20,47 +20,63 @@
         
         <div class="grid grid-2">
           <div class="card fade-in">
-            <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.5rem;">🎯 职业理念</h3>
-            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">
-              作为一名 Java 工程师，我始终相信技术的力量能够解决现实问题，创造真正的价值。
-              我热衷于学习新技术，追求代码的优雅与高效，致力于构建稳定、可扩展的软件系统。
-            </p>
-            <p style="color: var(--text-gray); line-height: 1.6;">
-              在我看来，编程不仅仅是写代码，更是一种思维方式和解决问题的艺术。
-              每一行代码都承载着对用户体验的思考和对系统性能的追求。
-            </p>
+            <div class="profile-header">
+              <div class="profile-avatar">👨‍💻</div>
+              <h2 class="profile-name">Keaton</h2>
+              <p class="profile-title">Java 后端工程师</p>
+            </div>
+            <div class="profile-content">
+              <p class="profile-description">
+                作为一名充满热情的Java工程师，我专注于构建高质量、可扩展的后端系统。
+                拥有丰富的企业级应用开发经验，熟练掌握Spring生态系统和微服务架构。
+              </p>
+              <div class="profile-stats">
+                <div class="stat-item">
+                  <div class="stat-number">5+</div>
+                  <div class="stat-label">年经验</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">20+</div>
+                  <div class="stat-label">项目经验</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">10+</div>
+                  <div class="stat-label">技术栈</div>
+                </div>
+              </div>
+            </div>
           </div>
           
           <div class="card fade-in">
-            <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.5rem;">🌟 技术追求</h3>
-            <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">
+            <h3 class="card-title">🌟 技术追求</h3>
+            <p class="card-text">
               我专注于 Java 生态系统的深度学习和实践，从 Spring 框架到微服务架构，
               从数据库优化到分布式系统设计，每一个技术领域都是我探索的方向。
             </p>
-            <p style="color: var(--text-gray); line-height: 1.6;">
+            <p class="card-text">
               同时，我也关注前端技术的发展，相信全栈能力能让我更好地理解整个系统的运作，
               为用户提供更完整、更优质的解决方案。
             </p>
           </div>
         </div>
 
-        <div class="grid grid-3" style="margin-top: 3rem;">
+        <div class="grid grid-3 features-grid">
           <div class="card fade-in text-center">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
-            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">创新思维</h4>
-            <p style="color: var(--text-gray); font-size: 0.9rem;">保持对新技术的敏感度，勇于尝试和创新</p>
+            <div class="feature-icon">💡</div>
+            <h4 class="feature-title">创新思维</h4>
+            <p class="feature-description">保持对新技术的敏感度，勇于尝试和创新</p>
           </div>
           
           <div class="card fade-in text-center">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🔧</div>
-            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">工程实践</h4>
-            <p style="color: var(--text-gray); font-size: 0.9rem;">注重代码质量，遵循最佳实践和设计模式</p>
+            <div class="feature-icon">🔧</div>
+            <h4 class="feature-title">工程实践</h4>
+            <p class="feature-description">注重代码质量，遵循最佳实践和设计模式</p>
           </div>
           
           <div class="card fade-in text-center">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
-            <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">团队合作</h4>
-            <p style="color: var(--text-gray); font-size: 0.9rem;">善于沟通协作，乐于分享知识和经验</p>
+            <div class="feature-icon">🤝</div>
+            <h4 class="feature-title">团队合作</h4>
+            <p class="feature-description">善于沟通协作，乐于分享知识和经验</p>
           </div>
         </div>
       </div>
@@ -146,6 +162,102 @@ export default {
 </script>
 
 <style scoped>
+.profile-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3rem;
+}
+
+.profile-name {
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.profile-title {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+}
+
+.profile-content {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.profile-description {
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-weight: bold;
+  color: var(--primary-blue);
+  font-size: 1.5rem;
+}
+
+.stat-label {
+  color: var(--text-gray);
+  font-size: 0.875rem;
+}
+
+.card-title {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.card-text {
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+.features-grid {
+  margin-top: 3rem;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-title {
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.feature-description {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
 .tech-stack {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

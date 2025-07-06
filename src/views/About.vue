@@ -13,49 +13,49 @@
       <div class="container">
         <div class="grid grid-2">
           <div class="card fade-in">
-            <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.5rem;">🚀 技术专长</h3>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+            <h3 class="skill-card-title">🚀 技术专长</h3>
+            <ul class="skill-list">
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 Java 企业级应用开发
               </li>
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 Spring Boot / Spring Cloud
               </li>
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 微服务架构设计
               </li>
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 数据库设计与优化
               </li>
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 前端技术 (Vue.js, React)
               </li>
             </ul>
           </div>
           
           <div class="card fade-in">
-            <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.5rem;">💼 工作经验</h3>
-            <p style="color: var(--text-gray); margin-bottom: 1rem;">作为一名经验丰富的 Java 工程师，我专注于：</p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+            <h3 class="skill-card-title">💼 工作经验</h3>
+            <p class="skill-card-text">作为一名经验丰富的 Java 工程师，我专注于：</p>
+            <ul class="skill-list">
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 高并发系统架构设计
               </li>
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 代码质量与性能优化
               </li>
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 团队协作与技术分享
               </li>
-              <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
-                <span style="position: absolute; left: 0; color: var(--primary-blue);">•</span>
+              <li class="skill-list-item">
+                <span class="skill-list-bullet">•</span>
                 持续学习新技术
               </li>
             </ul>
@@ -65,7 +65,7 @@
     </section>
 
     <!-- 详细介绍 -->
-    <section class="section" style="background: var(--bg-white);">
+    <section class="section section-white">
       <div class="container">
         <h2 class="section-title">我的故事</h2>
         <div class="story-content">
@@ -117,7 +117,7 @@
     </section>
 
     <!-- 联系方式 -->
-    <section class="section" style="background: var(--bg-white);">
+    <section class="section section-white">
       <div class="container">
         <h2 class="section-title">联系我</h2>
         <p class="section-subtitle">欢迎与我交流技术话题或合作机会</p>

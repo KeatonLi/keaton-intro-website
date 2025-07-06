@@ -1,26 +1,63 @@
 <template>
-  <article class="blog-post">
-    <header class="post-header">
-      <h1 class="post-title">{{ post.title }}</h1>
-      <div class="post-meta">
-        <span class="post-date">{{ formatDate(post.date) }}</span>
-        <span class="post-author">作者：{{ post.author }}</span>
-        <div class="post-tags">
-          <span v-for="tag in post.tags" :key="tag" class="tag">{{ tag }}</span>
-        </div>
-      </div>
-    </header>
-    
-    <div class="post-content blog-content" v-html="renderedContent"></div>
-    
-    <footer class="post-footer" v-if="showBackButton">
-      <div class="post-navigation">
-        <button @click="$emit('back')" class="btn btn-outline">
-          ← 返回博客列表
+  <div class="blog-post-container">
+    <!-- 目录侧边栏 -->
+    <aside class="table-of-contents" :class="{ 'toc-visible': tocVisible }">
+      <div class="toc-header">
+        <h3 class="toc-title">📋 文章目录</h3>
+        <button class="toc-toggle" @click="toggleToc">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+          </svg>
         </button>
       </div>
-    </footer>
-  </article>
+      <nav class="toc-nav" v-if="tableOfContents.length > 0">
+        <ul class="toc-list">
+          <li 
+            v-for="(item, index) in tableOfContents" 
+            :key="index"
+            class="toc-item"
+            :class="`toc-level-${item.level}`"
+          >
+            <a 
+              :href="`#${item.id}`" 
+              class="toc-link"
+              :class="{ 'toc-active': activeHeading === item.id }"
+              @click="scrollToHeading(item.id)"
+            >
+              {{ item.text }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div v-else class="toc-empty">
+        <p>暂无目录</p>
+      </div>
+    </aside>
+
+    <!-- 主要内容区域 -->
+    <article class="blog-post">
+      <header class="post-header">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <div class="post-meta">
+          <span class="post-date">{{ formatDate(post.date) }}</span>
+          <span class="post-author">作者：{{ post.author }}</span>
+          <div class="post-tags">
+            <span v-for="tag in post.tags" :key="tag" class="tag">{{ tag }}</span>
+          </div>
+        </div>
+      </header>
+      
+      <div class="post-content blog-content" v-html="renderedContent" ref="contentRef"></div>
+      
+      <footer class="post-footer" v-if="showBackButton">
+        <div class="post-navigation">
+          <button @click="$emit('back')" class="btn btn-outline">
+            ← 返回博客列表
+          </button>
+        </div>
+      </footer>
+    </article>
+  </div>
 </template>
 
 <script>
@@ -39,9 +76,28 @@ export default {
     }
   },
   emits: ['back'],
+  data() {
+    return {
+      tableOfContents: [],
+      activeHeading: '',
+      tocVisible: true,
+      observer: null
+    }
+  },
   computed: {
     renderedContent() {
       return renderMarkdown(this.post.content)
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.generateTableOfContents()
+      this.setupScrollSpy()
+    })
+  },
+  beforeUnmount() {
+    if (this.observer) {
+      this.observer.disconnect()
     }
   },
   methods: {
@@ -51,15 +107,205 @@ export default {
         month: 'long',
         day: 'numeric'
       })
+    },
+    
+    // 生成目录
+    generateTableOfContents() {
+      if (!this.$refs.contentRef) return
+      
+      const headings = this.$refs.contentRef.querySelectorAll('h1, h2, h3, h4, h5, h6')
+      this.tableOfContents = []
+      
+      headings.forEach((heading, index) => {
+        const level = parseInt(heading.tagName.charAt(1))
+        const text = heading.textContent.trim()
+        const id = `heading-${index}`
+        
+        // 为标题添加ID
+        heading.id = id
+        
+        this.tableOfContents.push({
+          id,
+          text,
+          level,
+          element: heading
+        })
+      })
+    },
+    
+    // 设置滚动监听
+    setupScrollSpy() {
+      if (!this.tableOfContents.length) return
+      
+      const options = {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+      }
+      
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.activeHeading = entry.target.id
+          }
+        })
+      }, options)
+      
+      this.tableOfContents.forEach(item => {
+        if (item.element) {
+          this.observer.observe(item.element)
+        }
+      })
+    },
+    
+    // 滚动到指定标题
+    scrollToHeading(id) {
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    },
+    
+    // 切换目录显示
+    toggleToc() {
+      this.tocVisible = !this.tocVisible
+    }
+  },
+  
+  watch: {
+    post: {
+      handler() {
+        this.$nextTick(() => {
+          this.generateTableOfContents()
+          this.setupScrollSpy()
+        })
+      },
+      immediate: true
     }
   }
 }
 </script>
 
 <style scoped>
-.blog-post {
-  max-width: 950px;
+/* 容器布局 */
+.blog-post-container {
+  display: flex;
+  max-width: 1400px;
   margin: 0 auto;
+  gap: 2rem;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* 目录侧边栏 */
+.table-of-contents {
+  width: 280px;
+  min-width: 280px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+.toc-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.toc-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  margin: 0;
+}
+
+.toc-toggle {
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.toc-toggle:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.toc-nav {
+  padding: 1rem 0;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  margin: 0;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  color: var(--text-gray);
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.toc-link:hover {
+  color: var(--primary-blue);
+  background: rgba(102, 126, 234, 0.05);
+  border-left-color: rgba(102, 126, 234, 0.3);
+}
+
+.toc-link.toc-active {
+  color: var(--primary-blue);
+  background: rgba(102, 126, 234, 0.1);
+  border-left-color: var(--primary-blue);
+  font-weight: 600;
+}
+
+/* 不同级别的标题缩进 */
+.toc-level-1 .toc-link { padding-left: 1.5rem; font-weight: 600; }
+.toc-level-2 .toc-link { padding-left: 2rem; }
+.toc-level-3 .toc-link { padding-left: 2.5rem; font-size: 0.85rem; }
+.toc-level-4 .toc-link { padding-left: 3rem; font-size: 0.85rem; }
+.toc-level-5 .toc-link { padding-left: 3.5rem; font-size: 0.8rem; }
+.toc-level-6 .toc-link { padding-left: 4rem; font-size: 0.8rem; }
+
+.toc-empty {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+/* 主要内容区域 */
+.blog-post {
+  flex: 1;
+  max-width: none;
+  margin: 0;
   padding: 4rem 3.5rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
   border-radius: 32px;
@@ -231,10 +477,54 @@ export default {
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
 }
 
-@media (max-width: 768px) {
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .blog-post-container {
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .table-of-contents {
+    width: 250px;
+    min-width: 250px;
+  }
+  
   .blog-post {
-    padding: var(--space-xl);
-    margin: 0 var(--space-md);
+    padding: 3rem 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-post-container {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .table-of-contents {
+    width: 100%;
+    min-width: auto;
+    position: static;
+    order: -1;
+    max-height: 300px;
+  }
+  
+  .table-of-contents:not(.toc-visible) {
+    max-height: 60px;
+    overflow: hidden;
+  }
+  
+  .toc-nav {
+    display: none;
+  }
+  
+  .toc-visible .toc-nav {
+    display: block;
+  }
+  
+  .blog-post {
+    padding: 2rem 1.5rem;
+    margin: 0;
   }
   
   .post-title {
@@ -244,10 +534,36 @@ export default {
   .post-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-sm);
+    gap: 0.5rem;
   }
   
   .post-content {
+    font-size: 1rem;
+  }
+  
+  /* 移动端目录项样式调整 */
+  .toc-level-1 .toc-link { padding-left: 1rem; }
+  .toc-level-2 .toc-link { padding-left: 1.5rem; }
+  .toc-level-3 .toc-link { padding-left: 2rem; }
+  .toc-level-4 .toc-link { padding-left: 2.5rem; }
+  .toc-level-5 .toc-link { padding-left: 3rem; }
+  .toc-level-6 .toc-link { padding-left: 3.5rem; }
+}
+
+@media (max-width: 480px) {
+  .blog-post {
+    padding: 1.5rem 1rem;
+  }
+  
+  .post-title {
+    font-size: 1.75rem;
+  }
+  
+  .toc-header {
+    padding: 1rem;
+  }
+  
+  .toc-title {
     font-size: 1rem;
   }
 }
