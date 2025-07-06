@@ -1,43 +1,42 @@
 import MarkdownIt from 'markdown-it'
 import container from 'markdown-it-container'
-import Prism from 'prismjs'
+import hljs from 'highlight.js'
 
-// 简化的语法高亮函数，避免动态导入问题
+// 导入 Highlight.js 的默认样式
+import 'highlight.js/styles/github.css'
+
+// 配置 Highlight.js
+hljs.configure({
+  // 禁用自动检测以提高性能
+  languages: [
+    'javascript', 'typescript', 'java', 'python', 'sql', 'json', 
+    'bash', 'shell', 'css', 'html', 'xml', 'markdown', 'yaml',
+    'dockerfile', 'nginx', 'apache', 'php', 'go', 'rust', 'cpp',
+    'c', 'csharp', 'ruby', 'kotlin', 'swift', 'scala', 'r'
+  ]
+})
+
+// 使用 Highlight.js 进行代码高亮
 function highlightCode(str, lang) {
-  // 基础语言支持
-  const supportedLanguages = {
-    'javascript': 'js',
-    'js': 'js',
-    'typescript': 'ts',
-    'ts': 'ts',
-    'java': 'java',
-    'python': 'python',
-    'py': 'python',
-    'sql': 'sql',
-    'json': 'json',
-    'bash': 'bash',
-    'shell': 'bash',
-    'css': 'css',
-    'html': 'html',
-    'xml': 'html'
+  if (lang && hljs.getLanguage(lang)) {
+    try {
+      const result = hljs.highlight(str, { language: lang })
+      return `<pre class="hljs language-${lang}"><code class="hljs language-${lang}">${result.value}</code></pre>`
+    } catch (error) {
+      console.warn(`代码高亮失败 (${lang}):`, error)
+    }
   }
   
-  const normalizedLang = supportedLanguages[lang] || lang
-  
-  // 简单的语法高亮，不依赖Prism组件
-  if (normalizedLang && ['js', 'javascript', 'ts', 'typescript'].includes(normalizedLang)) {
-    // JavaScript/TypeScript 简单高亮
-    const highlighted = str
-      .replace(/\b(function|const|let|var|if|else|for|while|return|class|import|export|from|default)\b/g, '<span class="token keyword">$1</span>')
-      .replace(/\b(true|false|null|undefined)\b/g, '<span class="token boolean">$1</span>')
-      .replace(/\b\d+\b/g, '<span class="token number">$&</span>')
-      .replace(/(['"`])((?:\\.|(?!\1)[^\\])*)\1/g, '<span class="token string">$&</span>')
-      .replace(/\/\/.*$/gm, '<span class="token comment">$&</span>')
-    return `<pre class="language-${lang}"><code class="language-${lang}">${highlighted}</code></pre>`
+  // 如果没有指定语言或语言不支持，尝试自动检测
+  try {
+    const result = hljs.highlightAuto(str)
+    const detectedLang = result.language || 'text'
+    return `<pre class="hljs language-${detectedLang}"><code class="hljs language-${detectedLang}">${result.value}</code></pre>`
+  } catch (error) {
+    console.warn('自动代码高亮失败:', error)
+    // 降级到纯文本
+    return `<pre class="hljs"><code class="hljs">${str.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`
   }
-  
-  // 其他语言使用基础样式
-  return `<pre class="language-${lang || 'text'}"><code class="language-${lang || 'text'}">${str.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`
 }
 
 // 创建 markdown-it 实例

@@ -1084,141 +1084,155 @@ body {
   border-radius: 16px 16px 0 0;
 }
 
-/* Prism Tomorrow Night 主题样式 */
-.blog-content pre[class*="language-"],
-.blog-content code[class*="language-"] {
-  color: #ccc;
-  background: none;
+/* Highlight.js 代码高亮样式 */
+.blog-content .hljs {
+  background: #1a202c;
+  color: #e2e8f0;
   font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
-  font-size: 1em;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.5;
-  tab-size: 4;
-  hyphens: none;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid #2d3748;
+  box-shadow: var(--shadow-lg);
+  overflow-x: auto;
+  position: relative;
 }
 
-.blog-content pre[class*="language-"] {
-  padding: 1em;
-  margin: .5em 0;
-  overflow: auto;
-  border-radius: 0.3em;
+/* 内联代码样式 */
+.blog-content :not(pre) > code {
+  background: var(--gray-100);
+  color: var(--text-primary);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: 0.875em;
+  border: 1px solid var(--gray-200);
+  font-weight: 500;
 }
 
-.blog-content :not(pre) > code[class*="language-"],
-.blog-content pre[class*="language-"] {
-  background: #2d2d2d;
+/* 代码块复制按钮样式 */
+.blog-content pre {
+  position: relative;
 }
 
-.blog-content :not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
+.blog-content pre:hover .copy-button {
+  opacity: 1;
 }
 
-.blog-content .token.comment,
-.blog-content .token.block-comment,
-.blog-content .token.prolog,
-.blog-content .token.doctype,
-.blog-content .token.cdata {
-  color: #999;
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
 }
 
-.blog-content .token.punctuation {
-  color: #ccc;
-}
+.copy-button:hover {
+   background: rgba(255, 255, 255, 0.2);
+   border-color: rgba(255, 255, 255, 0.3);
+ }
 
-.blog-content .token.tag,
-.blog-content .token.attr-name,
-.blog-content .token.namespace,
-.blog-content .token.deleted {
-  color: #e2777a;
-}
+ .blog-content .hljs code {
+   background: none;
+   color: inherit;
+   font-size: inherit;
+   padding: 0;
+   border-radius: 0;
+   border: none;
+   box-shadow: none;
+   font-family: inherit;
+ }
 
-.blog-content .token.function-name {
-  color: #6196cc;
-}
-
-.blog-content .token.boolean,
-.blog-content .token.number,
-.blog-content .token.function {
-  color: #f08d49;
-}
-
-.blog-content .token.property,
-.blog-content .token.class-name,
-.blog-content .token.constant,
-.blog-content .token.symbol {
-  color: #f8c555;
-}
-
-.blog-content .token.selector,
-.blog-content .token.important,
-.blog-content .token.atrule,
-.blog-content .token.keyword,
-.blog-content .token.builtin {
-  color: #cc99cd;
-}
-
-.blog-content .token.string,
-.blog-content .token.char,
-.blog-content .token.attr-value,
-.blog-content .token.regex,
-.blog-content .token.variable {
-  color: #7ec699;
-}
-
-.blog-content .token.operator,
-.blog-content .token.entity,
-.blog-content .token.url {
-  color: #67cdcc;
-}
-
-.blog-content .token.important,
-.blog-content .token.bold {
-  font-weight: bold;
-}
-
-.blog-content .token.italic {
+/* Highlight.js 语法高亮颜色 - GitHub Dark 主题风格 */
+.blog-content .hljs-comment,
+.blog-content .hljs-quote {
+  color: #8b949e;
   font-style: italic;
 }
 
-.blog-content .token.entity {
-  cursor: help;
+.blog-content .hljs-keyword,
+.blog-content .hljs-selector-tag,
+.blog-content .hljs-subst {
+  color: #ff7b72;
+  font-weight: 600;
 }
 
-.blog-content .token.inserted {
-  color: green;
+.blog-content .hljs-number,
+.blog-content .hljs-literal,
+.blog-content .hljs-variable,
+.blog-content .hljs-template-variable,
+.blog-content .hljs-tag .hljs-attr {
+  color: #79c0ff;
 }
 
-.blog-content pre code {
-  background: none;
-  color: inherit;
-  padding: 0;
-  border-radius: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  display: block;
-  padding: 1.25rem 1.5rem;
+.blog-content .hljs-string,
+.blog-content .hljs-doctag {
+  color: #a5d6ff;
 }
 
-/* Prism 代码高亮主题覆盖 */
-.blog-content pre[class*="language-"] {
-  background: #1e1e1e;
-  border-radius: 6px;
-  margin: 1.5rem 0;
-  overflow: auto;
+.blog-content .hljs-title,
+.blog-content .hljs-section,
+.blog-content .hljs-selector-id {
+  color: #d2a8ff;
+  font-weight: 600;
 }
 
-.blog-content code[class*="language-"],
-.blog-content pre[class*="language-"] {
-  color: #d4d4d4;
-  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.5;
+.blog-content .hljs-type,
+.blog-content .hljs-class .hljs-title {
+  color: #ffa657;
+}
+
+.blog-content .hljs-tag,
+.blog-content .hljs-name,
+.blog-content .hljs-attribute {
+  color: #7ee787;
+}
+
+.blog-content .hljs-regexp,
+.blog-content .hljs-link {
+  color: #a5d6ff;
+}
+
+.blog-content .hljs-symbol,
+.blog-content .hljs-bullet {
+  color: #79c0ff;
+}
+
+.blog-content .hljs-built_in,
+.blog-content .hljs-builtin-name {
+  color: #ffa657;
+}
+
+.blog-content .hljs-meta {
+  color: #8b949e;
+}
+
+.blog-content .hljs-deletion {
+  background: #ffeef0;
+  color: #82071e;
+}
+
+.blog-content .hljs-addition {
+  background: #f0fff4;
+  color: #22863a;
+}
+
+.blog-content .hljs-emphasis {
+  font-style: italic;
+}
+
+.blog-content .hljs-strong {
+  font-weight: bold;
 }
 
 /* 表格样式 */
