@@ -22,7 +22,7 @@
               :href="`#${item.id}`" 
               class="toc-link"
               :class="{ 'toc-active': activeHeading === item.id }"
-              @click="scrollToHeading(item.id)"
+              @click.prevent="scrollToHeading(item.id)"
             >
               {{ item.text }}
             </a>
@@ -81,7 +81,8 @@ export default {
       tableOfContents: [],
       activeHeading: '',
       tocVisible: true,
-      observer: null
+      observer: null,
+      scrollTimeout: null
     }
   },
   computed: {
@@ -98,6 +99,9 @@ export default {
   beforeUnmount() {
     if (this.observer) {
       this.observer.disconnect()
+    }
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout)
     }
   },
   methods: {
@@ -133,22 +137,55 @@ export default {
       })
     },
     
-    // 设置滚动监听
+    // 设置滚动监听 - 改进版本
     setupScrollSpy() {
       if (!this.tableOfContents.length) return
       
-      const options = {
-        root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0
+      // 清理之前的观察器
+      if (this.observer) {
+        this.observer.disconnect()
       }
       
+      // 获取滚动容器
+      const scrollContainer = this.$refs.contentRef.closest('.blog-post')
+      
+      const options = {
+        root: scrollContainer,
+        // 调整rootMargin以获得更好的定位效果
+        rootMargin: '-80px 0px -60% 0px',
+        threshold: [0, 0.1, 0.5, 1]
+      }
+      
+      // 用于跟踪当前可见的标题
+      const visibleHeadings = new Set()
+      
       this.observer = new IntersectionObserver((entries) => {
+        // 清除之前的超时
+        if (this.scrollTimeout) {
+          clearTimeout(this.scrollTimeout)
+        }
+        
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            this.activeHeading = entry.target.id
+            visibleHeadings.add(entry.target.id)
+          } else {
+            visibleHeadings.delete(entry.target.id)
           }
         })
+        
+        // 使用防抖来优化性能
+        this.scrollTimeout = setTimeout(() => {
+          // 选择第一个可见的标题作为活跃标题
+          if (visibleHeadings.size > 0) {
+            // 按照在文档中的顺序找到第一个可见标题
+            for (const item of this.tableOfContents) {
+              if (visibleHeadings.has(item.id)) {
+                this.activeHeading = item.id
+                break
+              }
+            }
+          }
+        }, 100) // 100ms 防抖延迟
       }, options)
       
       this.tableOfContents.forEach(item => {
@@ -158,14 +195,54 @@ export default {
       })
     },
     
-    // 滚动到指定标题
+    // 滚动到指定标题 - 改进版本
     scrollToHeading(id) {
       const element = document.getElementById(id)
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+      const scrollContainer = this.$refs.contentRef.closest('.blog-post')
+      
+      if (element && scrollContainer) {
+        // 获取元素相对于滚动容器的位置
+        const containerTop = scrollContainer.offsetTop
+        const elementTop = element.offsetTop
+        
+        // 计算滚动位置，考虑固定头部和间距
+        const headerOffset = 120 // 为固定头部留出空间
+        const scrollPosition = elementTop - containerTop - headerOffset
+        
+        // 确保滚动位置不会超出容器范围
+        const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight
+        const finalScrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll))
+        
+        scrollContainer.scrollTo({
+          top: finalScrollPosition,
+          behavior: 'smooth'
         })
+        
+        // 临时高亮目标标题
+        this.highlightHeading(id)
+      }
+    },
+    
+    // 临时高亮标题
+    highlightHeading(id) {
+      const element = document.getElementById(id)
+      if (element) {
+        element.style.transition = 'background-color 0.3s ease'
+        element.style.backgroundColor = 'rgba(102, 126, 234, 0.1)'
+        element.style.borderRadius = '4px'
+        element.style.padding = '0.25rem 0.5rem'
+        element.style.margin = '0 -0.5rem'
+        
+        setTimeout(() => {
+          element.style.backgroundColor = 'transparent'
+          setTimeout(() => {
+            element.style.removeProperty('background-color')
+            element.style.removeProperty('border-radius')
+            element.style.removeProperty('padding')
+            element.style.removeProperty('margin')
+            element.style.removeProperty('transition')
+          }, 300)
+        }, 1000)
       }
     },
     
