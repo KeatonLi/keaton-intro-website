@@ -21,7 +21,7 @@
     <!-- 页脚 -->
     <footer v-if="!isBlogPage" style="background: var(--text-dark); color: white; padding: 2rem 0; text-align: center;">
       <div class="container">
-        <p>&copy; 2024 Keaton. 专业的 Java 工程师 | 用心构建每一行代码</p>
+        <p>&copy; 2025 Keaton. 专业的 Java 工程师 | 用心构建每一行代码</p>
       </div>
     </footer>
   </div>
