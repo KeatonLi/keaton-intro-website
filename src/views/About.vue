@@ -147,8 +147,14 @@
 </template>
 
 <script>
+import { useSEO, pageSEO } from '../utils/seo.js'
+
 export default {
   name: 'About',
+  setup() {
+    // 设置关于页面SEO
+    useSEO(pageSEO.about)
+  },
   data() {
     return {
       skills: [

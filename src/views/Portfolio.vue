@@ -148,8 +148,14 @@
 </template>
 
 <script>
+import { useSEO, pageSEO } from '../utils/seo.js'
+
 export default {
   name: 'Portfolio',
+  setup() {
+    // 设置作品集页面SEO
+    useSEO(pageSEO.portfolio)
+  },
   data() {
     return {
       galleryImages: [

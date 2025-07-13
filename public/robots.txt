@@ -1,0 +1,35 @@
+User-agent: *
+Allow: /
+
+# 优先抓取重要页面
+Allow: /
+Allow: /about
+Allow: /portfolio
+Allow: /blog
+Allow: /blog/*
+
+# 禁止抓取的目录
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+Disallow: /.nuxt/
+Disallow: /src/
+
+# 网站地图位置
+Sitemap: https://keaton.dev/sitemap.xml
+
+# 爬取延迟（可选）
+Crawl-delay: 1
+
+# 特定搜索引擎优化
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1

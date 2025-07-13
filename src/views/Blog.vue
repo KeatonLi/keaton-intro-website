@@ -189,6 +189,7 @@ import { ref, computed, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { blogPosts } from '../data/blogPosts.js'
 import { renderMarkdown } from '../utils/markdown.js'
+import { useSEO, pageSEO, useBlogPostSEO } from '../utils/seo.js'
 import BlogPost from '../components/BlogPost.vue'
 
 export default {
@@ -209,6 +210,17 @@ export default {
     const activeHeading = ref('')
     const contentRef = ref(null)
     const observer = ref(null)
+    
+    // SEO配置
+    const setupSEO = () => {
+      if (props.postId && currentPost.value) {
+        // 单篇文章SEO
+        useBlogPostSEO(currentPost.value)
+      } else {
+        // 博客列表页SEO
+        useSEO(pageSEO.blog)
+      }
+    }
     
     // 当前选中的文章
     const currentPost = computed(() => {
@@ -384,6 +396,13 @@ export default {
           }, 300)
         })
       }
+      // 更新SEO
+      setupSEO()
+    }, { immediate: true })
+    
+    // 监听当前文章变化，更新SEO
+    watch(currentPost, () => {
+      setupSEO()
     }, { immediate: true })
     
     // 监听渲染内容变化

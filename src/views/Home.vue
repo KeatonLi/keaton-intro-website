@@ -137,8 +137,14 @@
 </template>
 
 <script>
+import { useSEO, pageSEO } from '../utils/seo.js'
+
 export default {
   name: 'Home',
+  setup() {
+    // 设置首页SEO
+    useSEO(pageSEO.home)
+  },
   mounted() {
     this.observeElements()
   },

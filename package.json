@@ -12,6 +12,7 @@
     "@mdit-vue/plugin-component": "^2.1.4",
     "@mdit-vue/plugin-frontmatter": "^2.1.4",
     "@mdit-vue/shared": "^2.1.4",
+    "@vueuse/head": "^2.0.0",
     "highlight.js": "^11.11.1",
     "markdown-it": "^14.1.0",
     "markdown-it-container": "^4.0.0",
