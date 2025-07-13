@@ -151,7 +151,7 @@
                     :href="`#${item.id}`" 
                     class="toc-link"
                     :class="{ 'toc-active': activeHeading === item.id }"
-                    @click="scrollToHeading(item.id)"
+                    @click.prevent="scrollToHeading(item.id)"
                   >
                     {{ item.text }}
                   </a>
@@ -210,6 +210,7 @@ export default {
     const activeHeading = ref('')
     const contentRef = ref(null)
     const observer = ref(null)
+    const scrollTimeout = ref(null)
     
     // SEO配置
     const setupSEO = () => {
@@ -300,22 +301,55 @@ export default {
       console.log('生成的目录:', tableOfContents.value)
     }
     
-    // 设置滚动监听
+    // 设置滚动监听 - 改进版本
     const setupScrollSpy = () => {
       if (!tableOfContents.value.length) return
       
-      const options = {
-        root: document.querySelector('.article-content'),
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0
+      // 清理之前的观察器
+      if (observer.value) {
+        observer.value.disconnect()
       }
       
+      const scrollContainer = document.querySelector('.article-content')
+      if (!scrollContainer) return
+      
+      const options = {
+        root: scrollContainer,
+        // 调整rootMargin以获得更好的定位效果
+        rootMargin: '-80px 0px -60% 0px',
+        threshold: [0, 0.1, 0.5, 1]
+      }
+      
+      // 用于跟踪当前可见的标题
+      const visibleHeadings = new Set()
+      
       observer.value = new IntersectionObserver((entries) => {
+        // 清除之前的超时
+        if (scrollTimeout.value) {
+          clearTimeout(scrollTimeout.value)
+        }
+        
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            activeHeading.value = entry.target.id
+            visibleHeadings.add(entry.target.id)
+          } else {
+            visibleHeadings.delete(entry.target.id)
           }
         })
+        
+        // 使用防抖来优化性能
+        scrollTimeout.value = setTimeout(() => {
+          // 选择第一个可见的标题作为活跃标题
+          if (visibleHeadings.size > 0) {
+            // 按照在文档中的顺序找到第一个可见标题
+            for (const item of tableOfContents.value) {
+              if (visibleHeadings.has(item.id)) {
+                activeHeading.value = item.id
+                break
+              }
+            }
+          }
+        }, 100) // 100ms 防抖延迟
       }, options)
       
       tableOfContents.value.forEach(item => {
@@ -325,16 +359,54 @@ export default {
       })
     }
     
-    // 滚动到指定标题
+    // 滚动到指定标题 - 改进版本
     const scrollToHeading = (id) => {
       const element = document.getElementById(id)
-      const container = document.querySelector('.article-content')
-      if (element && container) {
-        const offsetTop = element.offsetTop - container.offsetTop - 20
-        container.scrollTo({
-          top: offsetTop,
+      const scrollContainer = document.querySelector('.article-content')
+      
+      if (element && scrollContainer) {
+        // 获取元素相对于滚动容器的位置
+        const containerTop = scrollContainer.offsetTop
+        const elementTop = element.offsetTop
+        
+        // 计算滚动位置，考虑固定头部和间距
+        const headerOffset = 120 // 为固定头部留出空间
+        const scrollPosition = elementTop - containerTop - headerOffset
+        
+        // 确保滚动位置不会超出容器范围
+        const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight
+        const finalScrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll))
+        
+        scrollContainer.scrollTo({
+          top: finalScrollPosition,
           behavior: 'smooth'
         })
+        
+        // 临时高亮目标标题
+        highlightHeading(id)
+      }
+    }
+    
+    // 临时高亮标题
+    const highlightHeading = (id) => {
+      const element = document.getElementById(id)
+      if (element) {
+        element.style.transition = 'background-color 0.3s ease'
+        element.style.backgroundColor = 'rgba(102, 126, 234, 0.1)'
+        element.style.borderRadius = '4px'
+        element.style.padding = '0.25rem 0.5rem'
+        element.style.margin = '0 -0.5rem'
+        
+        setTimeout(() => {
+          element.style.backgroundColor = 'transparent'
+          setTimeout(() => {
+            element.style.removeProperty('background-color')
+            element.style.removeProperty('border-radius')
+            element.style.removeProperty('padding')
+            element.style.removeProperty('margin')
+            element.style.removeProperty('transition')
+          }, 300)
+        }, 1000)
       }
     }
     
@@ -423,6 +495,9 @@ export default {
       if (observer.value) {
         observer.value.disconnect()
       }
+      if (scrollTimeout.value) {
+        clearTimeout(scrollTimeout.value)
+      }
     })
 
     return {
@@ -436,6 +511,7 @@ export default {
       tableOfContents,
       activeHeading,
       contentRef,
+      scrollTimeout,
       selectPost,
       backToWelcome,
       toggleSidebar,
@@ -808,9 +884,6 @@ export default {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
   backdrop-filter: blur(10px);
   margin-bottom: 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
 
 .post-title {
