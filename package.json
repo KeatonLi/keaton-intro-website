@@ -1,33 +1,24 @@
 {
   "name": "keaton-intro-website",
-  "version": "1.0.0",
-  "description": "Keaton's Personal Portfolio Website",
-  "main": "index.html",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^2.1.4",
-    "@mdit-vue/plugin-frontmatter": "^2.1.4",
-    "@mdit-vue/shared": "^2.1.4",
-    "@vueuse/head": "^2.0.0",
-    "highlight.js": "^11.11.1",
-    "markdown-it": "^14.1.0",
-    "markdown-it-container": "^4.0.0",
-    "vue": "^3.3.4",
-    "vue-router": "^4.5.1"
+    "@nuxt/content": "^2.13.0",
+    "@nuxt/icon": "^1.0.0",
+    "@nuxtjs/color-mode": "^3.4.0",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "nuxt": "^3.13.0",
+    "vue": "latest",
+    "vue-router": "latest"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.4.5"
-  },
-  "keywords": [
-    "portfolio",
-    "vue",
-    "personal-website"
-  ],
-  "author": "Keaton",
-  "license": "MIT"
+    "@tailwindcss/typography": "^0.5.15"
+  }
 }
