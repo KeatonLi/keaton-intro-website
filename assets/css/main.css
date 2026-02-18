@@ -8,7 +8,90 @@ html {
 }
 
 body {
-  @apply antialiased;
+  @apply antialiased bg-surface-50 dark:bg-surface-950 text-gray-900 dark:text-gray-100;
+}
+
+/* 玻璃拟态卡片 */
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-surface-900/70 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-glass;
+  }
+  
+  .glass-dark {
+    @apply bg-surface-900/80 backdrop-blur-xl border border-white/10 shadow-glass-dark;
+  }
+  
+  .glass-card {
+    @apply bg-white/60 dark:bg-surface-800/60 backdrop-blur-lg border border-white/30 dark:border-white/5 rounded-2xl shadow-glass;
+  }
+  
+  /* 渐变文字 */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-cyan-500 to-primary-600;
+  }
+  
+  /* 发光按钮 */
+  .btn-glow {
+    @apply relative overflow-hidden transition-all duration-300;
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+  
+  .btn-glow:hover {
+    box-shadow: 0 0 40px rgba(14, 165, 233, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  /* 卡片悬停效果 */
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .card-hover:hover {
+    @apply -translate-y-2 shadow-xl;
+    box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.2);
+  }
+  
+  /* 渐变边框 */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(to right, rgba(14, 165, 233, 0.2), rgba(139, 92, 246, 0.2));
+    padding: 1px;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.5), rgba(139, 92, 246, 0.5));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 1px;
+  }
+  
+  /* 霓虹光效 */
+  .neon-glow {
+    text-shadow: 0 0 10px rgba(14, 165, 233, 0.5), 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+  
+  /* 网格背景 */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  
+  /* 模糊球体装饰 */
+  .blur-blob {
+    @apply absolute rounded-full filter blur-3xl opacity-30 pointer-events-none;
+  }
+  
+  /* 线条渐变 */
+  .line-gradient {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.5), transparent);
+  }
 }
 
 /* 滚动条样式 */
@@ -18,23 +101,143 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-800;
+  @apply bg-surface-100 dark:bg-surface-900;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  @apply bg-primary-300 dark:bg-primary-700 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
+  @apply bg-primary-400 dark:bg-primary-600;
 }
 
 /* 选中文字样式 */
 ::selection {
-  @apply bg-primary-200 dark:bg-primary-900 text-primary-900 dark:text-primary-200;
+  @apply bg-primary-200 dark:bg-primary-900/50 text-primary-900 dark:text-primary-200;
 }
 
-/* 行数限制工具类 */
+/* 动画延迟工具类 */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* 响应式文字 */
+.text-responsive-xl {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+}
+
+.text-responsive-lg {
+  @apply text-2xl sm:text-3xl md:text-4xl;
+}
+
+.text-responsive-md {
+  @apply text-xl sm:text-2xl md:text-3xl;
+}
+
+/* 隐藏滚动条但保持滚动功能 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 平滑过渡 */
+.transition-smooth {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+/* 发光边框 */
+.glow-border {
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.2), inset 0 0 20px rgba(14, 165, 233, 0.05);
+}
+
+/* 现代按钮样式 */
+.btn-modern {
+  @apply relative px-6 py-3 rounded-xl font-medium transition-all duration-300 overflow-hidden;
+}
+
+.btn-modern::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-primary-500 to-cyan-500 opacity-0 transition-opacity duration-300;
+}
+
+.btn-modern:hover::before {
+  @apply opacity-10;
+}
+
+/* 标签样式 */
+.tag-modern {
+  @apply px-3 py-1 rounded-full text-xs font-medium bg-primary-100/50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-200/50 dark:border-primary-700/30;
+}
+
+/* 多色渐变文字 */
+.gradient-text-purple {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-accent-500 to-cyan-500;
+}
+
+/* 技能条动画 */
+.skill-bar-fill {
+  @apply h-full rounded-full transition-all duration-1000 ease-out;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 卡片发光效果 */
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(139, 92, 246, 0.3));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* 时间线连接线动画 */
+.timeline-line {
+  @apply absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-accent-500 to-cyan-500 transform -translate-x-1/2;
+}
+
+/* 脉冲点 */
+.pulse-dot {
+  @apply relative;
+}
+
+.pulse-dot::after {
+  content: '';
+  @apply absolute inset-0 rounded-full bg-current opacity-30 animate-ping;
+}
+
+/* 悬浮卡片 */
+.hover-lift {
+  @apply transition-all duration-300;
+}
+
+.hover-lift:hover {
+  @apply -translate-y-1;
+  box-shadow: 0 10px 40px -10px rgba(14, 165, 233, 0.25);
+}
+
+/* 文字截断 */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -47,4 +250,89 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* 技能等级徽章 */
+.skill-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.skill-badge-master {
+  @apply bg-success-100 text-success-700 dark:bg-success-900/30 dark:text-success-300;
+}
+
+.skill-badge-proficient {
+  @apply bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300;
+}
+
+.skill-badge-familiar {
+  @apply bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-400;
+}
+
+/* 项目卡片悬停效果 */
+.project-card-hover {
+  @apply transition-all duration-500;
+}
+
+.project-card-hover:hover {
+  @apply transform;
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* 图标旋转动画 */
+.icon-spin-hover {
+  @apply transition-transform duration-300;
+}
+
+.group:hover .icon-spin-hover {
+  @apply rotate-12;
+}
+
+/* 边框发光 */
+.border-glow {
+  @apply relative;
+}
+
+.border-glow::after {
+  content: '';
+  @apply absolute inset-0 rounded-inherit opacity-0 transition-opacity duration-300;
+  box-shadow: inset 0 0 20px rgba(14, 165, 233, 0.2);
+}
+
+.border-glow:hover::after {
+  @apply opacity-100;
+}
+
+/* 渐变按钮 */
+.btn-gradient {
+  @apply relative overflow-hidden bg-gradient-to-r from-primary-500 via-cyan-500 to-primary-500;
+  background-size: 200% auto;
+  transition: 0.5s;
+}
+
+.btn-gradient:hover {
+  background-position: right center;
+}
+
+/* 统计数字样式 */
+.stat-number {
+  @apply text-4xl md:text-5xl font-bold;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 卡片组间隔 */
+.card-grid {
+  @apply grid gap-6;
+}
+
+/* 区域标题样式 */
+.section-title {
+  @apply text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4;
+}
+
+.section-subtitle {
+  @apply text-lg text-gray-600 dark:text-gray-400;
 }
