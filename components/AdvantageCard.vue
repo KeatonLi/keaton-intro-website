@@ -50,33 +50,21 @@ const props = defineProps({
 
 const gradient = computed(() => {
   const gradients = {
-    primary: 'from-primary-500 to-cyan-500',
-    success: 'from-success-500 to-emerald-500',
-    warning: 'from-warning-500 to-amber-500',
-    danger: 'from-danger-500 to-rose-500',
-    accent: 'from-accent-500 to-purple-500'
+    primary: 'from-primary-500 to-primary-600'
   }
   return gradients[props.color] || gradients.primary
 })
 
 const iconBgClass = computed(() => {
   const classes = {
-    primary: 'bg-gradient-to-br from-primary-500 to-cyan-500 text-white shadow-glow',
-    success: 'bg-gradient-to-br from-success-500 to-emerald-500 text-white',
-    warning: 'bg-gradient-to-br from-warning-500 to-amber-500 text-white',
-    danger: 'bg-gradient-to-br from-danger-500 to-rose-500 text-white',
-    accent: 'bg-gradient-to-br from-accent-500 to-purple-500 text-white'
+    primary: 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-glow'
   }
   return classes[props.color] || classes.primary
 })
 
 const textClass = computed(() => {
   const classes = {
-    primary: 'text-primary-600 dark:text-primary-400',
-    success: 'text-success-600 dark:text-success-400',
-    warning: 'text-warning-600 dark:text-warning-400',
-    danger: 'text-danger-600 dark:text-danger-400',
-    accent: 'text-accent-600 dark:text-accent-400'
+    primary: 'text-primary-600 dark:text-primary-400'
   }
   return classes[props.color] || classes.primary
 })

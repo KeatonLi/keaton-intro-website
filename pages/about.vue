@@ -3,8 +3,8 @@
     <!-- 页面标题 -->
     <section class="relative pt-32 pb-20 overflow-hidden">
       <div class="absolute inset-0">
-        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-500/20 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-cyan-500/20 rounded-full filter blur-3xl"></div>
+        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-500/15 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary-400/15 rounded-full filter blur-3xl"></div>
       </div>
       
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -27,9 +27,9 @@
             <div class="sticky top-28 space-y-6">
               <!-- 头像卡片 -->
               <div class="glass-card p-8 text-center relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-cyan-500/10"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-600/10"></div>
                 <div class="relative">
-                  <div class="w-32 h-32 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-500 to-cyan-500 flex items-center justify-center text-6xl shadow-glow">
+                  <div class="w-32 h-32 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-6xl shadow-glow">
                     👨‍💻
                   </div>
                   <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Keaton</h2>
@@ -65,7 +65,7 @@
                   专业资质
                 </h3>
                 <div class="space-y-2">
-                  <div v-for="(cert, index) in certificates" :key="index" class="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-primary-50 to-cyan-50 dark:from-primary-900/20 dark:to-cyan-900/20">
+                  <div v-for="(cert, index) in certificates" :key="index" class="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-primary-50 to-primary-100/50 dark:from-primary-900/20 dark:to-primary-800/20">
                     <span class="text-2xl">{{ cert.icon }}</span>
                     <span class="text-sm text-gray-700 dark:text-gray-300">{{ cert.name }}</span>
                   </div>
@@ -73,7 +73,7 @@
               </div>
 
               <!-- 下载简历 -->
-              <button class="w-full btn-glow py-4 bg-gradient-to-r from-primary-500 to-cyan-500 text-white font-semibold rounded-2xl flex items-center justify-center gap-2">
+              <button class="w-full btn-glow py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl flex items-center justify-center gap-2">
                 <Icon name="ph:download-bold" class="w-5 h-5" />
                 下载简历 PDF
               </button>
@@ -116,14 +116,14 @@
               
               <!-- 掌握（独立设计与调优） -->
               <div class="mb-6">
-                <h4 class="text-sm font-semibold text-success-600 dark:text-success-400 mb-3 flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-success-500"></span>
+                <h4 class="text-sm font-semibold text-primary-600 dark:text-primary-400 mb-3 flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-primary-500"></span>
                   掌握（独立设计与调优）
                 </h4>
                 <div class="grid sm:grid-cols-2 gap-3">
-                  <div v-for="(skill, index) in masteredSkills" :key="index" class="p-3 rounded-xl bg-success-50 dark:bg-success-900/10 border border-success-100 dark:border-success-800/30">
+                  <div v-for="(skill, index) in masteredSkills" :key="index" class="p-3 rounded-xl bg-primary-50 dark:bg-primary-900/10 border border-primary-100 dark:border-primary-800/30">
                     <div class="flex items-center gap-2">
-                      <Icon name="ph:check-circle-bold" class="w-4 h-4 text-success-500" />
+                      <Icon name="ph:check-circle-bold" class="w-4 h-4 text-primary-500" />
                       <span class="font-medium text-gray-900 dark:text-white text-sm">{{ skill.name }}</span>
                     </div>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 ml-6">{{ skill.desc }}</p>
@@ -134,13 +134,13 @@
               <!-- 熟练（生产环境实战） -->
               <div class="mb-6">
                 <h4 class="text-sm font-semibold text-primary-600 dark:text-primary-400 mb-3 flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-primary-500"></span>
+                  <span class="w-2 h-2 rounded-full bg-primary-400"></span>
                   熟练（生产环境实战）
                 </h4>
                 <div class="grid sm:grid-cols-2 gap-3">
-                  <div v-for="(skill, index) in proficientSkills" :key="index" class="p-3 rounded-xl bg-primary-50 dark:bg-primary-900/10 border border-primary-100 dark:border-primary-800/30">
+                  <div v-for="(skill, index) in proficientSkills" :key="index" class="p-3 rounded-xl bg-primary-50/50 dark:bg-primary-900/5 border border-primary-100/50 dark:border-primary-800/20">
                     <div class="flex items-center gap-2">
-                      <Icon name="ph:star-bold" class="w-4 h-4 text-primary-500" />
+                      <Icon name="ph:star-bold" class="w-4 h-4 text-primary-400" />
                       <span class="font-medium text-gray-900 dark:text-white text-sm">{{ skill.name }}</span>
                     </div>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 ml-6">{{ skill.desc }}</p>
@@ -178,7 +178,7 @@
                 教育背景
               </h3>
               <div class="flex items-start gap-4">
-                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-2xl flex-shrink-0">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-2xl flex-shrink-0">
                   🎓
                 </div>
                 <div>
@@ -215,7 +215,7 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="glass-card p-12 text-center relative overflow-hidden">
           <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full filter blur-3xl"></div>
-          <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full filter blur-3xl"></div>
+          <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary-400/10 rounded-full filter blur-3xl"></div>
           
           <div class="relative">
             <h2 class="text-responsive-md font-bold text-gray-900 dark:text-white mb-4">
@@ -225,7 +225,7 @@
               欢迎与我交流技术话题或合作机会
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="mailto:keaton@example.com" class="btn-glow px-8 py-4 bg-gradient-to-r from-primary-500 to-cyan-500 text-white font-semibold rounded-2xl inline-flex items-center justify-center gap-2">
+              <a href="mailto:keaton@example.com" class="btn-glow px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl inline-flex items-center justify-center gap-2">
                 <Icon name="ph:envelope-bold" class="w-5 h-5" />
                 发送邮件
               </a>
@@ -284,7 +284,7 @@ const workExperience = [
     title: '中级 Java 开发工程师',
     subtitle: '深圳市名通科技股份有限公司',
     tag: '在职',
-    dotColor: 'bg-green-500',
+    dotColor: 'bg-primary-500',
     details: [
       '可观测体系：主导 eBPF+Beyla 无侵入链路追踪及 Flink 实时计算框架落地，支撑日均百亿级日志处理',
       '高并发业务：短信平台核心链路重构，内存级 Trie 树+布隆过滤器替代数据库查询，单机 QPS 5→5000',

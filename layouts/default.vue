@@ -7,8 +7,8 @@
       
       <!-- 渐变光球 -->
       <div class="blur-blob w-96 h-96 bg-primary-400/20 -top-48 -right-48 animate-float"></div>
-      <div class="blur-blob w-64 h-64 bg-cyan-400/20 top-1/3 -left-32 animate-float delay-1000"></div>
-      <div class="blur-blob w-80 h-80 bg-accent-400/10 bottom-0 right-1/4 animate-float delay-2000"></div>
+      <div class="blur-blob w-64 h-64 bg-primary-300/20 top-1/3 -left-32 animate-float delay-1000"></div>
+      <div class="blur-blob w-80 h-80 bg-primary-500/10 bottom-0 right-1/4 animate-float delay-2000"></div>
     </div>
 
     <!-- 导航栏 -->
@@ -20,7 +20,7 @@
         >
           <!-- Logo -->
           <NuxtLink to="/" class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-cyan-500 flex items-center justify-center text-white font-bold text-lg shadow-glow group-hover:shadow-glow-lg transition-shadow">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-lg shadow-glow group-hover:shadow-glow-lg transition-shadow">
               K
             </div>
             <span class="text-xl font-bold gradient-text">Keaton</span>
@@ -109,7 +109,7 @@
           <!-- 品牌信息 -->
           <div class="md:col-span-2">
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-cyan-500 flex items-center justify-center text-white font-bold">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold">
                 K
               </div>
               <span class="text-xl font-bold gradient-text">Keaton</span>

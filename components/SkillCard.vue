@@ -35,11 +35,7 @@ const props = defineProps({
 
 const iconBgClass = computed(() => {
   const classes = {
-    primary: 'bg-gradient-to-br from-primary-500/20 to-cyan-500/20 text-primary-600',
-    success: 'bg-gradient-to-br from-success-500/20 to-emerald-500/20 text-success-600',
-    warning: 'bg-gradient-to-br from-warning-500/20 to-amber-500/20 text-warning-600',
-    danger: 'bg-gradient-to-br from-danger-500/20 to-rose-500/20 text-danger-600',
-    accent: 'bg-gradient-to-br from-accent-500/20 to-purple-500/20 text-accent-600'
+    primary: 'bg-gradient-to-br from-primary-500/20 to-primary-600/20 text-primary-600'
   }
   return classes[props.color] || classes.primary
 })

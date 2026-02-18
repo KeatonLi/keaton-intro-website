@@ -39,11 +39,7 @@ const levelText = computed(() => {
 
 const gradientClass = computed(() => {
   const gradients = {
-    primary: 'bg-gradient-to-r from-primary-500 to-cyan-500',
-    success: 'bg-gradient-to-r from-success-500 to-emerald-400',
-    warning: 'bg-gradient-to-r from-warning-500 to-amber-400',
-    danger: 'bg-gradient-to-r from-danger-500 to-rose-400',
-    accent: 'bg-gradient-to-r from-accent-500 to-purple-400'
+    primary: 'bg-gradient-to-r from-primary-500 to-primary-400'
   }
   return gradients[props.color] || gradients.primary
 })

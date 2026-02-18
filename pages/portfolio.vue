@@ -3,8 +3,8 @@
     <!-- 页面标题 -->
     <section class="relative pt-32 pb-20 overflow-hidden">
       <div class="absolute inset-0">
-        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-primary-500/20 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-1/3 left-1/4 w-80 h-80 bg-cyan-500/20 rounded-full filter blur-3xl"></div>
+        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-primary-500/15 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-1/3 left-1/4 w-80 h-80 bg-primary-400/15 rounded-full filter blur-3xl"></div>
       </div>
       
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -121,7 +121,7 @@
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- 云原生可观测 -->
             <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-cyan-500 flex items-center justify-center text-3xl text-white">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
                 🔭
               </div>
               <h3 class="font-bold text-gray-900 dark:text-white mb-2">云原生可观测</h3>
@@ -134,7 +134,7 @@
             
             <!-- 实时计算 -->
             <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-warning-500 to-amber-500 flex items-center justify-center text-3xl text-white">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
                 ⚡
               </div>
               <h3 class="font-bold text-gray-900 dark:text-white mb-2">实时计算</h3>
@@ -147,7 +147,7 @@
             
             <!-- 数据存储 -->
             <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-success-500 to-emerald-500 flex items-center justify-center text-3xl text-white">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
                 🗄️
               </div>
               <h3 class="font-bold text-gray-900 dark:text-white mb-2">数据存储</h3>
@@ -160,7 +160,7 @@
             
             <!-- 工程效能 -->
             <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-accent-500 to-purple-500 flex items-center justify-center text-3xl text-white">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
                 🚀
               </div>
               <h3 class="font-bold text-gray-900 dark:text-white mb-2">工程效能</h3>
@@ -180,7 +180,7 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="glass-card p-12 text-center relative overflow-hidden">
           <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full filter blur-3xl"></div>
-          <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full filter blur-3xl"></div>
+          <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary-400/10 rounded-full filter blur-3xl"></div>
           
           <div class="relative">
             <h2 class="text-responsive-md font-bold text-gray-900 dark:text-white mb-4">
@@ -189,7 +189,7 @@
             <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto">
               无论是技术交流、项目合作还是工作机会，都欢迎与我联系
             </p>
-            <NuxtLink to="/about" class="btn-glow px-8 py-4 bg-gradient-to-r from-primary-500 to-cyan-500 text-white font-semibold rounded-2xl inline-flex items-center justify-center gap-2">
+            <NuxtLink to="/about" class="btn-glow px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl inline-flex items-center justify-center gap-2">
               <Icon name="ph:hand-waving-bold" class="w-5 h-5" />
               联系我
             </NuxtLink>
@@ -213,7 +213,7 @@ const projects = [
     title: '云帆可观测与 CMDB 平台',
     description: '基于 eBPF+Beyla 的无侵入链路追踪平台，支撑日均百亿级日志处理。原单体 CMDB 存在实时计算瓶颈（复杂聚合耗时久、内存占用高），可观测链路存在 Redis 热点 KEY 与数据一致性问题。',
     icon: '🔭',
-    gradient: 'bg-gradient-to-br from-primary-600 to-cyan-600',
+    gradient: 'bg-gradient-to-br from-primary-600 to-primary-700',
     period: '2025.03 - 2025.09',
     role: '核心开发/架构优化负责人',
     technologies: ['eBPF', 'Flink', 'Kafka', 'ClickHouse', 'SNMP', 'LLDP', 'Beyla', 'OTLP'],
@@ -233,7 +233,7 @@ const projects = [
     title: '南航资产管理系统精准测试平台',
     description: '传统单体系统回归测试成本高，静态插桩侵入性强且高并发下调用路径混淆。基于 JaCoCo 动态插桩的智能测试平台，实现代码变更驱动的精准测试。',
     icon: '🎯',
-    gradient: 'bg-gradient-to-br from-accent-600 to-purple-600',
+    gradient: 'bg-gradient-to-br from-primary-500 to-primary-700',
     period: '2025.06 - 2025.11',
     role: '技术负责人',
     technologies: ['JaCoCo', 'Java Agent', 'Gor', '贪心算法', 'JVM 字节码'],
@@ -253,7 +253,7 @@ const projects = [
     title: '华阳造价指标大数据平台',
     description: '建筑造价数据管理平台，需支持亿级历史工程数据多维度检索与智能测算，原 MongoDB 存在内存告警与聚合性能瓶颈。对标广联达指标网站的建筑互联网系统。',
     icon: '🏗️',
-    gradient: 'bg-gradient-to-br from-success-600 to-emerald-600',
+    gradient: 'bg-gradient-to-br from-primary-500 to-primary-600',
     period: '2023.07 - 2024.12',
     role: '核心开发',
     technologies: ['ES', 'ClickHouse', 'MongoDB', 'Qdrant', 'RAG', '微服务'],
@@ -280,31 +280,31 @@ const highlights = [
   {
     title: 'Flink 实时计算',
     icon: '⚡',
-    iconBg: 'bg-warning-100 dark:bg-warning-900/30 text-warning-600',
+    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
     desc: '设计加盐打散+窗口聚合解决数据倾斜，实现秒级指标统计；RocksDB State Backend 容错，支撑日均百亿级日志处理。'
   },
   {
     title: 'JVM 字节码优化',
     icon: '🧬',
-    iconBg: 'bg-accent-100 dark:bg-accent-900/30 text-accent-600',
+    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
     desc: 'Java Agent 运行时轻量级字节码修改替代静态插桩，覆盖率准确性提升至 95%+，降低运行时干扰 30%。'
   },
   {
     title: '高并发架构优化',
     icon: '🚀',
-    iconBg: 'bg-success-100 dark:bg-success-900/30 text-success-600',
+    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
     desc: '内存级 Trie 树+布隆过滤器替代数据库查询，单机 QPS 从 5 提升到 5000，实现 1000 倍性能提升。'
   },
   {
     title: '数据库架构治理',
     icon: '🗄️',
-    iconBg: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600',
+    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
     desc: 'MongoDB 迁移 ClickHouse 冷热数据分层方案，存储成本下降 70%，内存占用下降 60%，保障业务连续性。'
   },
   {
     title: '工程效能提升',
     icon: '📈',
-    iconBg: 'bg-rose-100 dark:bg-rose-900/30 text-rose-600',
+    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
     desc: 'AI 辅助代码审查与文档生成，效率提升 50%；建立 Git 统计与性能基线监控，制定 Code Review 规范。'
   }
 ]

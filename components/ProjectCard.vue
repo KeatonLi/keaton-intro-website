@@ -41,7 +41,7 @@
             <span 
               v-for="tech in technologies" 
               :key="tech"
-              class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary-50 to-cyan-50 dark:from-primary-900/20 dark:to-cyan-900/20 text-primary-700 dark:text-primary-300 text-sm border border-primary-100 dark:border-primary-800"
+              class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary-50 to-primary-100/50 dark:from-primary-900/20 dark:to-primary-800/20 text-primary-700 dark:text-primary-300 text-sm border border-primary-100 dark:border-primary-800"
             >
               {{ tech }}
             </span>
@@ -59,7 +59,7 @@
               :key="i"
               class="flex items-start gap-2 text-gray-600 dark:text-gray-300 text-sm"
             >
-              <Icon name="ph:star-bold" class="w-5 h-5 text-warning-500 mt-0.5 flex-shrink-0" />
+              <Icon name="ph:star-bold" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
               <span>{{ achievement }}</span>
             </li>
           </ul>
@@ -84,7 +84,7 @@ defineProps({
   title: { type: String, required: true },
   description: { type: String, required: true },
   icon: { type: String, required: true },
-  gradient: { type: String, default: 'bg-gradient-to-br from-primary-500 to-cyan-600' },
+  gradient: { type: String, default: 'bg-gradient-to-br from-primary-500 to-primary-700' },
   period: { type: String, required: true },
   role: { type: String, default: '' },
   technologies: { type: Array, default: () => [] },

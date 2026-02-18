@@ -2,7 +2,7 @@
   <div class="timeline">
     <div class="relative">
       <!-- 时间线 -->
-      <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-500 via-accent-500 to-cyan-500 transform md:-translate-x-1/2"></div>
+      <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-400 via-primary-500 to-primary-600 transform md:-translate-x-1/2"></div>
       
       <div class="space-y-8">
         <div 
@@ -26,7 +26,7 @@
           >
             <div class="flex flex-wrap items-center gap-2 mb-2">
               <span class="tag-modern text-xs">{{ item.period }}</span>
-              <span v-if="item.tag" class="px-2 py-0.5 rounded-full text-xs bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300">
+              <span v-if="item.tag" class="px-2 py-0.5 rounded-full text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300">
                 {{ item.tag }}
               </span>
             </div>

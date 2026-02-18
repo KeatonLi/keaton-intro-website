@@ -3,8 +3,8 @@
     <!-- 页面标题 -->
     <section class="relative pt-32 pb-20 overflow-hidden">
       <div class="absolute inset-0">
-        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-500/20 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-cyan-500/20 rounded-full filter blur-3xl"></div>
+        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-500/15 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary-400/15 rounded-full filter blur-3xl"></div>
       </div>
       
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -23,15 +23,15 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-3 gap-6">
           <div class="glass-card p-6 text-center card-hover">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-success-500 to-emerald-500 flex items-center justify-center text-3xl text-white">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
               🎯
             </div>
             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">掌握</h3>
             <p class="text-sm text-gray-500 dark:text-gray-400">独立设计与调优</p>
-            <div class="mt-4 text-3xl font-bold text-success-600 dark:text-success-400">{{ masteredCount }}</div>
+            <div class="mt-4 text-3xl font-bold text-primary-600 dark:text-primary-400">{{ masteredCount }}</div>
           </div>
           <div class="glass-card p-6 text-center card-hover">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-cyan-500 flex items-center justify-center text-3xl text-white">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-400 to-primary-500 flex items-center justify-center text-3xl text-white">
               ⭐
             </div>
             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">熟练</h3>
@@ -39,7 +39,7 @@
             <div class="mt-4 text-3xl font-bold text-primary-600 dark:text-primary-400">{{ proficientCount }}</div>
           </div>
           <div class="glass-card p-6 text-center card-hover">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-gray-500 to-slate-500 flex items-center justify-center text-3xl text-white">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center text-3xl text-white">
               📚
             </div>
             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">了解</h3>
@@ -67,7 +67,7 @@
           <!-- Java 生态 -->
           <div class="glass-card p-8">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-2xl text-white">
+              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-2xl text-white">
                 ☕
               </div>
               <div>
@@ -76,18 +76,18 @@
               </div>
             </div>
             <div class="space-y-4">
-              <SkillBar name="高并发编程 (JUC/AQS/线程池)" :level="90" color="success" />
-              <SkillBar name="JVM 深度调优 (G1/ZGC/Arthas)" :level="85" color="success" />
-              <SkillBar name="Spring Cloud (Nacos/Sentinel/Seata)" :level="88" color="success" />
+              <SkillBar name="高并发编程 (JUC/AQS/线程池)" :level="90" color="primary" />
+              <SkillBar name="JVM 深度调优 (G1/ZGC/Arthas)" :level="85" color="primary" />
+              <SkillBar name="Spring Cloud (Nacos/Sentinel/Seata)" :level="88" color="primary" />
             </div>
             <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
               <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">JUC</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">AQS</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">线程池调优</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">G1/ZGC</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">Arthas</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">Spring Cloud</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">JUC</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">AQS</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">线程池调优</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">G1/ZGC</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">Arthas</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">Spring Cloud</span>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@
           <!-- 数据存储 -->
           <div class="glass-card p-8">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-2xl text-white">
+              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-2xl text-white">
                 🗄️
               </div>
               <div>
@@ -104,17 +104,17 @@
               </div>
             </div>
             <div class="space-y-4">
-              <SkillBar name="MySQL (索引优化/执行计划/分库分表)" :level="88" color="success" />
-              <SkillBar name="Redis (Cluster/RDB+AOF/缓存治理)" :level="90" color="success" />
-              <SkillBar name="ClickHouse (列式存储/分区键设计)" :level="82" color="success" />
+              <SkillBar name="MySQL (索引优化/执行计划/分库分表)" :level="88" color="primary" />
+              <SkillBar name="Redis (Cluster/RDB+AOF/缓存治理)" :level="90" color="primary" />
+              <SkillBar name="ClickHouse (列式存储/分区键设计)" :level="82" color="primary" />
             </div>
             <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
               <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">索引优化</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">执行计划</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">锁机制</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">Redis Cluster</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">Redisson</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">索引优化</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">执行计划</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">锁机制</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">Redis Cluster</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">Redisson</span>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@
           <!-- 实时计算 -->
           <div class="glass-card p-8">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-warning-500 to-amber-500 flex items-center justify-center text-2xl text-white">
+              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-2xl text-white">
                 ⚡
               </div>
               <div>
@@ -131,17 +131,17 @@
               </div>
             </div>
             <div class="space-y-4">
-              <SkillBar name="Flink (EventTime 窗口/Checkpoint)" :level="85" color="success" />
-              <SkillBar name="RocksDB State Backend" :level="80" color="success" />
-              <SkillBar name="数据倾斜治理" :level="82" color="success" />
+              <SkillBar name="Flink (EventTime 窗口/Checkpoint)" :level="85" color="primary" />
+              <SkillBar name="RocksDB State Backend" :level="80" color="primary" />
+              <SkillBar name="数据倾斜治理" :level="82" color="primary" />
             </div>
             <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
               <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">EventTime</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">窗口聚合</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">Checkpoint</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">RocksDB</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">加盐打散</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">EventTime</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">窗口聚合</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">Checkpoint</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">RocksDB</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">加盐打散</span>
               </div>
             </div>
           </div>
@@ -149,7 +149,7 @@
           <!-- 高性能计算 -->
           <div class="glass-card p-8">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-500 to-purple-500 flex items-center justify-center text-2xl text-white">
+              <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-2xl text-white">
                 🚀
               </div>
               <div>
@@ -158,17 +158,17 @@
               </div>
             </div>
             <div class="space-y-4">
-              <SkillBar name="Trie 树 / 布隆过滤器" :level="88" color="success" />
-              <SkillBar name="贪心算法 / 动态规划" :level="80" color="success" />
-              <SkillBar name="JVM 字节码优化" :level="82" color="success" />
+              <SkillBar name="Trie 树 / 布隆过滤器" :level="88" color="primary" />
+              <SkillBar name="贪心算法 / 动态规划" :level="80" color="primary" />
+              <SkillBar name="JVM 字节码优化" :level="82" color="primary" />
             </div>
             <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
               <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">Trie 树</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">布隆过滤器</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">贪心算法</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">Java Agent</span>
-                <span class="px-3 py-1 rounded-lg bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300 text-sm">字节码插桩</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">Trie 树</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">布隆过滤器</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">贪心算法</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">Java Agent</span>
+                <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm">字节码插桩</span>
               </div>
             </div>
           </div>
@@ -250,7 +250,7 @@
         <div class="glass-card p-8">
           <div class="relative">
             <!-- 时间线 -->
-            <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-accent-500 to-cyan-500 transform md:-translate-x-1/2"></div>
+            <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-400 via-primary-500 to-primary-600 transform md:-translate-x-1/2"></div>
             
             <div class="space-y-12">
               <div v-for="(milestone, index) in milestones" :key="index" class="relative pl-12 md:pl-0" :class="index % 2 === 0 ? 'md:pr-[50%]' : 'md:pl-[50%]'">
@@ -277,7 +277,7 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="glass-card p-12 text-center relative overflow-hidden">
           <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full filter blur-3xl"></div>
-          <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full filter blur-3xl"></div>
+          <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary-400/10 rounded-full filter blur-3xl"></div>
           
           <div class="relative">
             <h2 class="text-responsive-md font-bold text-gray-900 dark:text-white mb-4">
@@ -287,7 +287,7 @@
               欢迎查看我的项目经历，或与我交流技术话题
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <NuxtLink to="/portfolio" class="btn-glow px-8 py-4 bg-gradient-to-r from-primary-500 to-cyan-500 text-white font-semibold rounded-2xl inline-flex items-center justify-center gap-2">
+              <NuxtLink to="/portfolio" class="btn-glow px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl inline-flex items-center justify-center gap-2">
                 <Icon name="ph:briefcase-bold" class="w-5 h-5" />
                 查看项目
               </NuxtLink>

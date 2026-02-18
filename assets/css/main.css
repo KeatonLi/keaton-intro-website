@@ -25,19 +25,19 @@ body {
     @apply bg-white/60 dark:bg-surface-800/60 backdrop-blur-lg border border-white/30 dark:border-white/5 rounded-2xl shadow-glass;
   }
   
-  /* 渐变文字 */
+  /* 渐变文字 - 蓝色系 */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-cyan-500 to-primary-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600;
   }
   
   /* 发光按钮 */
   .btn-glow {
     @apply relative overflow-hidden transition-all duration-300;
-    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   }
   
   .btn-glow:hover {
-    box-shadow: 0 0 40px rgba(14, 165, 233, 0.5);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
     transform: translateY(-2px);
   }
   
@@ -77,8 +77,8 @@ body {
   /* 网格背景 */
   .grid-pattern {
     background-image: 
-      linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   
@@ -90,7 +90,7 @@ body {
   /* 线条渐变 */
   .line-gradient {
     @apply h-px w-full;
-    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
   }
 }
 
@@ -105,16 +105,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary-300 dark:bg-primary-700 rounded-full;
+  @apply bg-primary-400 dark:bg-primary-600 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-400 dark:bg-primary-600;
+  @apply bg-primary-500 dark:bg-primary-500;
 }
 
 /* 选中文字样式 */
 ::selection {
-  @apply bg-primary-200 dark:bg-primary-900/50 text-primary-900 dark:text-primary-200;
+  @apply bg-primary-200 dark:bg-primary-800/60 text-primary-800 dark:text-primary-100;
 }
 
 /* 动画延迟工具类 */
@@ -202,7 +202,7 @@ body {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(139, 92, 246, 0.3));
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(96, 165, 250, 0.4));
   z-index: -1;
   opacity: 0;
   transition: opacity 0.3s;
@@ -214,7 +214,7 @@ body {
 
 /* 时间线连接线动画 */
 .timeline-line {
-  @apply absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-accent-500 to-cyan-500 transform -translate-x-1/2;
+  @apply absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-400 via-primary-500 to-primary-600 transform -translate-x-1/2;
 }
 
 /* 脉冲点 */
@@ -234,7 +234,7 @@ body {
 
 .hover-lift:hover {
   @apply -translate-y-1;
-  box-shadow: 0 10px 40px -10px rgba(14, 165, 233, 0.25);
+  box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.25);
 }
 
 /* 文字截断 */
@@ -296,7 +296,7 @@ body {
 .border-glow::after {
   content: '';
   @apply absolute inset-0 rounded-inherit opacity-0 transition-opacity duration-300;
-  box-shadow: inset 0 0 20px rgba(14, 165, 233, 0.2);
+  box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.2);
 }
 
 .border-glow:hover::after {
@@ -305,7 +305,7 @@ body {
 
 /* 渐变按钮 */
 .btn-gradient {
-  @apply relative overflow-hidden bg-gradient-to-r from-primary-500 via-cyan-500 to-primary-500;
+  @apply relative overflow-hidden bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600;
   background-size: 200% auto;
   transition: 0.5s;
 }
@@ -317,7 +317,7 @@ body {
 /* 统计数字样式 */
 .stat-number {
   @apply text-4xl md:text-5xl font-bold;
-  background: linear-gradient(135deg, #0ea5e9, #06b6d4, #8b5cf6);
+  background: linear-gradient(135deg, #3b82f6, #60a5fa, #2563eb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
