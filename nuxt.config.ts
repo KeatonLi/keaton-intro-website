@@ -55,5 +55,10 @@ export default defineNuxtConfig({
   },
   
   // 兼容性日期
-  compatibilityDate: '2024-09-01'
+  compatibilityDate: '2024-09-01',
+
+  // 修复 #app-manifest 错误
+  experimental: {
+    appManifest: false
+  }
 })
