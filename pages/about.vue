@@ -1,44 +1,39 @@
 <template>
   <div>
     <!-- 页面标题 -->
-    <section class="relative pt-32 pb-20 overflow-hidden">
-      <div class="absolute inset-0">
-        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-500/15 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary-400/15 rounded-full filter blur-3xl"></div>
-      </div>
-      
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <span class="tag-modern mb-4 inline-block">关于我</span>
-        <h1 class="text-responsive-xl font-bold mb-6">
-          <span class="gradient-text">认识 Keaton</span>
+    <section class="pt-24 pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-block px-4 py-1.5 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-4">关于我</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          <span class="text-primary-600">认识 Keaton</span>
         </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
           一名热爱技术的 Java 工程师，专注于云原生可观测与系统性能治理
         </p>
       </div>
     </section>
 
     <!-- 个人资料卡片 -->
-    <section class="py-16 relative">
+    <section class="py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-3 gap-8">
           <!-- 左侧：个人信息卡片 -->
           <div class="lg:col-span-1">
             <div class="sticky top-28 space-y-6">
               <!-- 头像卡片 -->
-              <div class="glass-card p-8 text-center relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-600/10"></div>
+              <div class="bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-primary-600/5"></div>
                 <div class="relative">
-                  <div class="w-32 h-32 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-6xl shadow-glow">
+                  <div class="w-32 h-32 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-6xl shadow-lg shadow-primary-500/30">
                     👨‍💻
                   </div>
-                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Keaton</h2>
-                  <p class="text-primary-600 dark:text-primary-400 font-medium mb-4">中级 Java 开发工程师</p>
+                  <h2 class="text-2xl font-bold text-gray-900 mb-2">Keaton</h2>
+                  <p class="text-primary-600 font-medium mb-4">中级 Java 开发工程师</p>
                   <div class="flex justify-center gap-3">
-                    <a href="https://github.com" target="_blank" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary-500 hover:text-white transition-all hover:scale-110">
+                    <a href="https://github.com" target="_blank" class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary-500 hover:text-white transition-all hover:scale-110">
                       <Icon name="ph:github-logo-bold" class="w-5 h-5" />
                     </a>
-                    <a href="mailto:keaton@example.com" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary-500 hover:text-white transition-all hover:scale-110">
+                    <a href="mailto:keaton@example.com" class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary-500 hover:text-white transition-all hover:scale-110">
                       <Icon name="ph:envelope-bold" class="w-5 h-5" />
                     </a>
                   </div>
@@ -46,34 +41,34 @@
               </div>
 
               <!-- 基本信息 -->
-              <div class="glass-card p-6 space-y-4">
+              <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 space-y-4">
                 <div v-for="(info, index) in basicInfo" :key="index" class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600">
+                  <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center text-primary-600">
                     <Icon :name="info.icon" class="w-5 h-5" />
                   </div>
                   <div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">{{ info.label }}</p>
-                    <p class="font-medium text-gray-900 dark:text-white">{{ info.value }}</p>
+                    <p class="text-xs text-gray-500">{{ info.label }}</p>
+                    <p class="font-medium text-gray-900">{{ info.value }}</p>
                   </div>
                 </div>
               </div>
 
               <!-- 专业资质 -->
-              <div class="glass-card p-6">
-                <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <Icon name="ph:certificate-bold" class="w-5 h-5 text-primary-600" />
                   专业资质
                 </h3>
                 <div class="space-y-2">
-                  <div v-for="(cert, index) in certificates" :key="index" class="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-primary-50 to-primary-100/50 dark:from-primary-900/20 dark:to-primary-800/20">
+                  <div v-for="(cert, index) in certificates" :key="index" class="flex items-center gap-3 p-3 rounded-xl bg-primary-50">
                     <span class="text-2xl">{{ cert.icon }}</span>
-                    <span class="text-sm text-gray-700 dark:text-gray-300">{{ cert.name }}</span>
+                    <span class="text-sm text-gray-700">{{ cert.name }}</span>
                   </div>
                 </div>
               </div>
 
               <!-- 下载简历 -->
-              <button class="w-full btn-glow py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl flex items-center justify-center gap-2">
+              <button class="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30 transition-all hover:-translate-y-0.5">
                 <Icon name="ph:download-bold" class="w-5 h-5" />
                 下载简历 PDF
               </button>
@@ -83,12 +78,12 @@
           <!-- 右侧：详细内容 -->
           <div class="lg:col-span-2 space-y-8">
             <!-- 自我介绍 -->
-            <div class="glass-card p-8">
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <Icon name="ph:user-circle-bold" class="w-6 h-6 text-primary-600" />
                 自我介绍
               </h3>
-              <div class="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+              <div class="space-y-4 text-gray-600 leading-relaxed">
                 <p>
                   你好！我是 Keaton，一名中级 Java 开发工程师，毕业于广东海洋大学计算机科学与技术专业。目前就职于深圳市名通科技股份有限公司，主导云原生可观测体系、高并发实时计算平台的设计与落地。
                 </p>
@@ -102,9 +97,9 @@
             </div>
 
             <!-- 技能专长 -->
-            <div class="glass-card p-8">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
               <div class="flex items-center justify-between mb-6">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
                   <Icon name="ph:code-bold" class="w-6 h-6 text-primary-600" />
                   专业技能
                 </h3>
@@ -116,46 +111,46 @@
               
               <!-- 掌握（独立设计与调优） -->
               <div class="mb-6">
-                <h4 class="text-sm font-semibold text-primary-600 dark:text-primary-400 mb-3 flex items-center gap-2">
+                <h4 class="text-sm font-semibold text-primary-600 mb-3 flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-primary-500"></span>
                   掌握（独立设计与调优）
                 </h4>
                 <div class="grid sm:grid-cols-2 gap-3">
-                  <div v-for="(skill, index) in masteredSkills" :key="index" class="p-3 rounded-xl bg-primary-50 dark:bg-primary-900/10 border border-primary-100 dark:border-primary-800/30">
+                  <div v-for="(skill, index) in masteredSkills" :key="index" class="p-3 rounded-xl bg-primary-50 border border-primary-100">
                     <div class="flex items-center gap-2">
                       <Icon name="ph:check-circle-bold" class="w-4 h-4 text-primary-500" />
-                      <span class="font-medium text-gray-900 dark:text-white text-sm">{{ skill.name }}</span>
+                      <span class="font-medium text-gray-900 text-sm">{{ skill.name }}</span>
                     </div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 ml-6">{{ skill.desc }}</p>
+                    <p class="text-xs text-gray-500 mt-1 ml-6">{{ skill.desc }}</p>
                   </div>
                 </div>
               </div>
               
               <!-- 熟练（生产环境实战） -->
               <div class="mb-6">
-                <h4 class="text-sm font-semibold text-primary-600 dark:text-primary-400 mb-3 flex items-center gap-2">
+                <h4 class="text-sm font-semibold text-primary-600 mb-3 flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-primary-400"></span>
                   熟练（生产环境实战）
                 </h4>
                 <div class="grid sm:grid-cols-2 gap-3">
-                  <div v-for="(skill, index) in proficientSkills" :key="index" class="p-3 rounded-xl bg-primary-50/50 dark:bg-primary-900/5 border border-primary-100/50 dark:border-primary-800/20">
+                  <div v-for="(skill, index) in proficientSkills" :key="index" class="p-3 rounded-xl bg-primary-50/50 border border-primary-100/50">
                     <div class="flex items-center gap-2">
                       <Icon name="ph:star-bold" class="w-4 h-4 text-primary-400" />
-                      <span class="font-medium text-gray-900 dark:text-white text-sm">{{ skill.name }}</span>
+                      <span class="font-medium text-gray-900 text-sm">{{ skill.name }}</span>
                     </div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 ml-6">{{ skill.desc }}</p>
+                    <p class="text-xs text-gray-500 mt-1 ml-6">{{ skill.desc }}</p>
                   </div>
                 </div>
               </div>
               
               <!-- 了解（技术视野拓展） -->
               <div>
-                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-2">
+                <h4 class="text-sm font-semibold text-gray-500 mb-3 flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-gray-400"></span>
                   了解（技术视野拓展）
                 </h4>
                 <div class="flex flex-wrap gap-2">
-                  <span v-for="(skill, index) in familiarSkills" :key="index" class="px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-sm">
+                  <span v-for="(skill, index) in familiarSkills" :key="index" class="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 text-sm">
                     {{ skill }}
                   </span>
                 </div>
@@ -163,8 +158,8 @@
             </div>
 
             <!-- 工作经历时间线 -->
-            <div class="glass-card p-8">
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <Icon name="ph:briefcase-bold" class="w-6 h-6 text-primary-600" />
                 工作经历
               </h3>
@@ -172,8 +167,8 @@
             </div>
 
             <!-- 教育背景 -->
-            <div class="glass-card p-8">
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <Icon name="ph:graduation-cap-bold" class="w-6 h-6 text-primary-600" />
                 教育背景
               </h3>
@@ -182,10 +177,10 @@
                   🎓
                 </div>
                 <div>
-                  <h4 class="font-bold text-gray-900 dark:text-white">计算机科学与技术（本科）</h4>
-                  <p class="text-primary-600 dark:text-primary-400">广东海洋大学 · 数学与计算机学院</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">2019.09 - 2023.06</p>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                  <h4 class="font-bold text-gray-900">计算机科学与技术（本科）</h4>
+                  <p class="text-primary-600">广东海洋大学 · 数学与计算机学院</p>
+                  <p class="text-sm text-gray-500 mt-1">2019.09 - 2023.06</p>
+                  <p class="text-sm text-gray-600 mt-2">
                     主修课程：计算机网络、操作系统、算法与数据结构、数据库原理及应用、C 语言等
                   </p>
                 </div>
@@ -193,13 +188,13 @@
             </div>
 
             <!-- 兴趣爱好 -->
-            <div class="glass-card p-8">
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <Icon name="ph:heart-bold" class="w-6 h-6 text-primary-600" />
                 兴趣爱好
               </h3>
               <div class="flex flex-wrap gap-3">
-                <span v-for="(hobby, index) in hobbies" :key="index" class="px-4 py-2 rounded-xl bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-sm flex items-center gap-2">
+                <span v-for="(hobby, index) in hobbies" :key="index" class="px-4 py-2 rounded-xl bg-gray-50 text-gray-700 text-sm flex items-center gap-2">
                   <span class="text-lg">{{ hobby.icon }}</span>
                   {{ hobby.name }}
                 </span>
@@ -211,25 +206,26 @@
     </section>
 
     <!-- 联系我 -->
-    <section class="py-16 relative">
+    <section class="py-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="glass-card p-12 text-center relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full filter blur-3xl"></div>
-          <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary-400/10 rounded-full filter blur-3xl"></div>
+        <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl p-12 text-center text-white shadow-xl shadow-primary-500/30 relative overflow-hidden">
+          <!-- 背景装饰 -->
+          <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
           
           <div class="relative">
-            <h2 class="text-responsive-md font-bold text-gray-900 dark:text-white mb-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
               联系我
             </h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto">
+            <p class="text-white/80 mb-8 max-w-lg mx-auto">
               欢迎与我交流技术话题或合作机会
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="mailto:keaton@example.com" class="btn-glow px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl inline-flex items-center justify-center gap-2">
+              <a href="mailto:keaton@example.com" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl shadow-lg hover:bg-gray-50 transition-all hover:-translate-y-0.5">
                 <Icon name="ph:envelope-bold" class="w-5 h-5" />
                 发送邮件
               </a>
-              <a href="https://github.com" target="_blank" class="px-8 py-4 glass text-gray-700 dark:text-gray-300 font-semibold rounded-2xl inline-flex items-center justify-center gap-2 hover:bg-white/80 dark:hover:bg-surface-800/80 transition-all">
+              <a href="https://github.com" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-white/20 text-white font-semibold rounded-xl hover:bg-white/30 transition-all">
                 <Icon name="ph:github-logo-bold" class="w-5 h-5" />
                 GitHub
               </a>

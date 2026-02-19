@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 阅读进度条 -->
-    <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-gray-200 dark:bg-gray-800">
+    <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-gray-200">
       <div 
         class="h-full bg-gradient-to-r from-primary-500 to-cyan-500 transition-all duration-150"
         :style="{ width: `${readingProgress}%` }"
@@ -9,7 +9,7 @@
     </div>
 
     <!-- 文章头部背景 -->
-    <section class="relative bg-gradient-to-br from-primary-500 to-cyan-600 dark:from-primary-800 dark:to-cyan-900 pt-32 pb-20 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-primary-500 to-cyan-600 pt-24 pb-16 overflow-hidden">
       <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
       
       <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,13 +70,13 @@
     </section>
 
     <!-- 文章内容区 -->
-    <article class="min-h-screen bg-gray-50 dark:bg-gray-900 pb-20">
+    <article class="min-h-screen pb-20">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
         <!-- 文章卡片 -->
-        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg overflow-hidden">
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
           <!-- 目录（桌面端侧边显示，移动端顶部显示） -->
-          <div v-if="toc.length > 0" class="border-b border-gray-100 dark:border-gray-700 p-6 lg:p-8 bg-gray-50/50 dark:bg-gray-900/50">
-            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4 flex items-center">
+          <div v-if="toc.length > 0" class="border-b border-gray-100 p-6 lg:p-8 bg-gray-50/50">
+            <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4 flex items-center">
               <Icon name="ph:list-dashes-bold" class="w-4 h-4 mr-2" />
               文章目录
             </h3>
@@ -87,7 +87,7 @@
                 :href="`#${item.id}`"
                 @click.prevent="scrollToSection(item.id)"
                 class="text-sm px-3 py-1.5 rounded-full transition-colors"
-                :class="activeSection === item.id ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'"
+                :class="activeSection === item.id ? 'bg-primary-100 text-primary-700' : 'text-gray-600 hover:bg-gray-100'"
                 :style="{ marginLeft: `${(item.depth - 2) * 12}px` }"
               >
                 {{ item.text }}
@@ -99,36 +99,36 @@
           <div class="p-6 lg:p-12">
             <ContentDoc 
               :path="`/blog/${route.params.slug}`"
-              class="prose dark:prose-invert prose-lg max-w-none 
-                prose-headings:text-gray-900 dark:prose-headings:text-white 
+              class="prose prose-lg max-w-none 
+                prose-headings:text-gray-900 
                 prose-headings:font-bold
-                prose-p:text-gray-700 dark:prose-p:text-gray-300 
-                prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-a:no-underline hover:prose-a:underline
-                prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:font-mono prose-code:text-sm
-                prose-pre:bg-gray-900 dark:prose-pre:bg-black prose-pre:rounded-xl
+                prose-p:text-gray-700 
+                prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline
+                prose-code:text-pink-600 prose-code:font-mono prose-code:text-sm
+                prose-pre:bg-gray-900 prose-pre:rounded-xl
                 prose-img:rounded-xl prose-img:shadow-lg
-                prose-blockquote:border-l-primary-500 prose-blockquote:bg-primary-50 dark:prose-blockquote:bg-primary-900/10 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg"
+                prose-blockquote:border-l-primary-500 prose-blockquote:bg-primary-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg"
             />
           </div>
 
           <!-- 文章底部操作区 -->
-          <div class="px-6 lg:px-12 py-6 border-t border-gray-100 dark:border-gray-700 flex flex-wrap items-center justify-between gap-4">
+          <div class="px-6 lg:px-12 py-6 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center gap-4">
-              <span class="text-sm text-gray-500 dark:text-gray-400">分享文章：</span>
+              <span class="text-sm text-gray-500">分享文章：</span>
               <button 
                 @click="shareArticle('twitter')"
-                class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                class="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-primary-100 hover:text-primary-600 transition-colors"
               >
                 <Icon name="ph:twitter-logo-bold" class="w-5 h-5" />
               </button>
               <button 
                 @click="shareArticle('copy')"
-                class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-primary-100 hover:text-primary-600 transition-colors"
+                class="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-primary-100 hover:text-primary-600 transition-colors"
               >
                 <Icon name="ph:link-bold" class="w-5 h-5" />
               </button>
             </div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">
+            <div class="text-sm text-gray-500">
               最后更新：{{ formatDate(post.date) }}
             </div>
           </div>
@@ -159,7 +159,7 @@
 
         <!-- 同系列文章 -->
         <div v-if="sameSeriesPosts.length > 0" class="mt-12">
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
             <Icon name="ph:books-bold" class="w-5 h-5 text-primary-600 mr-2" />
             同系列文章
           </h3>
@@ -168,16 +168,16 @@
               v-for="article in sameSeriesPosts"
               :key="article._path"
               :to="article._path"
-              class="group flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all"
+              class="group flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all"
             >
               <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-400 to-cyan-500 flex items-center justify-center text-2xl flex-shrink-0">
                 {{ article.cover }}
               </div>
               <div class="flex-1 min-w-0">
-                <h4 class="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors truncate">
+                <h4 class="font-medium text-gray-900 group-hover:text-primary-600 transition-colors truncate">
                   {{ article.title }}
                 </h4>
-                <span class="text-sm text-gray-500 dark:text-gray-400">{{ article.readingTime }}分钟阅读</span>
+                <span class="text-sm text-gray-500">{{ article.readingTime }}分钟阅读</span>
               </div>
               <Icon name="ph:arrow-right-bold" class="w-5 h-5 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
             </NuxtLink>
@@ -186,7 +186,7 @@
 
         <!-- 相关文章推荐 -->
         <div v-if="relatedPosts.length > 0" class="mt-12">
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
             <Icon name="ph:thumbs-up-bold" class="w-5 h-5 text-primary-600 mr-2" />
             相关推荐
           </h3>
@@ -195,16 +195,16 @@
               v-for="article in relatedPosts"
               :key="article._path"
               :to="article._path"
-              class="group flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all"
+              class="group flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all"
             >
               <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-400 to-primary-500 flex items-center justify-center text-2xl flex-shrink-0">
                 {{ article.cover }}
               </div>
               <div class="flex-1 min-w-0">
-                <h4 class="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors truncate">
+                <h4 class="font-medium text-gray-900 group-hover:text-primary-600 transition-colors truncate">
                   {{ article.title }}
                 </h4>
-                <span class="text-sm text-gray-500 dark:text-gray-400">{{ article.series }}</span>
+                <span class="text-sm text-gray-500">{{ article.series }}</span>
               </div>
               <Icon name="ph:arrow-right-bold" class="w-5 h-5 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
             </NuxtLink>
@@ -216,12 +216,12 @@
           <NuxtLink
             v-if="prevPost"
             :to="prevPost._path"
-            class="flex items-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-all group flex-1"
+            class="flex items-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all group flex-1"
           >
             <Icon name="ph:arrow-left-bold" class="w-5 h-5 text-gray-400 group-hover:text-primary-600 mr-4 flex-shrink-0" />
             <div class="min-w-0">
-              <span class="text-sm text-gray-500 dark:text-gray-400 block mb-1">上一篇</span>
-              <span class="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-1">
+              <span class="text-sm text-gray-500 block mb-1">上一篇</span>
+              <span class="font-medium text-gray-900 group-hover:text-primary-600 transition-colors line-clamp-1">
                 {{ prevPost.title }}
               </span>
             </div>
@@ -231,11 +231,11 @@
           <NuxtLink
             v-if="nextPost"
             :to="nextPost._path"
-            class="flex items-center justify-end p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-all group flex-1 text-right"
+            class="flex items-center justify-end p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all group flex-1 text-right"
           >
             <div class="min-w-0">
-              <span class="text-sm text-gray-500 dark:text-gray-400 block mb-1">下一篇</span>
-              <span class="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-1">
+              <span class="text-sm text-gray-500 block mb-1">下一篇</span>
+              <span class="font-medium text-gray-900 group-hover:text-primary-600 transition-colors line-clamp-1">
                 {{ nextPost.title }}
               </span>
             </div>
@@ -248,7 +248,7 @@
     <!-- 复制成功提示 -->
     <div
       v-if="showCopyToast"
-      class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full shadow-lg z-50 flex items-center gap-2"
+      class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-gray-900 text-white rounded-full shadow-lg z-50 flex items-center gap-2"
     >
       <Icon name="ph:check-circle-bold" class="w-5 h-5 text-green-400" />
       链接已复制到剪贴板
@@ -404,7 +404,7 @@ onUnmounted(() => {
 }
 
 .prose code {
-  @apply px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700 rounded text-sm;
+  @apply px-1.5 py-0.5 bg-gray-100 rounded text-sm;
 }
 
 .prose pre code {
@@ -423,15 +423,15 @@ onUnmounted(() => {
 
 .prose th,
 .prose td {
-  @apply border border-gray-200 dark:border-gray-700 px-4 py-3;
+  @apply border border-gray-200 px-4 py-3;
 }
 
 .prose th {
-  @apply bg-gray-50 dark:bg-gray-800 font-semibold text-left;
+  @apply bg-gray-50 font-semibold text-left;
 }
 
 .prose tr:nth-child(even) {
-  @apply bg-gray-50/50 dark:bg-gray-800/50;
+  @apply bg-gray-50/50;
 }
 
 /* 列表样式 */

@@ -1,63 +1,58 @@
 <template>
   <div>
     <!-- 页面标题 -->
-    <section class="relative pt-32 pb-20 overflow-hidden">
-      <div class="absolute inset-0">
-        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-primary-500/15 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-1/3 left-1/4 w-80 h-80 bg-primary-400/15 rounded-full filter blur-3xl"></div>
-      </div>
-      
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <span class="tag-modern mb-4 inline-block">作品集</span>
-        <h1 class="text-responsive-xl font-bold mb-6">
-          <span class="gradient-text">项目经历</span>
+    <section class="pt-24 pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-block px-4 py-1.5 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-4">作品集</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          <span class="text-primary-600">项目经历</span>
         </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
           主导的核心项目，从云原生可观测到精准测试平台的完整技术实践
         </p>
       </div>
     </section>
 
     <!-- 项目统计 -->
-    <section class="py-8 relative">
+    <section class="py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="glass-card p-6 text-center card-hover">
-            <div class="text-3xl md:text-4xl font-bold gradient-text mb-1">
+          <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:border-primary-200 transition-all">
+            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">
               <CountUp :end="100" suffix="亿+" />
             </div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">日均日志处理</div>
+            <div class="text-sm text-gray-500">日均日志处理</div>
           </div>
-          <div class="glass-card p-6 text-center card-hover">
-            <div class="text-3xl md:text-4xl font-bold gradient-text mb-1">
+          <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:border-primary-200 transition-all">
+            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">
               <CountUp :end="1000" suffix="x" />
             </div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">QPS性能提升</div>
+            <div class="text-sm text-gray-500">QPS性能提升</div>
           </div>
-          <div class="glass-card p-6 text-center card-hover">
-            <div class="text-3xl md:text-4xl font-bold gradient-text mb-1">
+          <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:border-primary-200 transition-all">
+            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">
               <CountUp :end="95" suffix="%+" />
             </div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">覆盖率准确性</div>
+            <div class="text-sm text-gray-500">覆盖率准确性</div>
           </div>
-          <div class="glass-card p-6 text-center card-hover">
-            <div class="text-3xl md:text-4xl font-bold gradient-text mb-1">
+          <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl hover:border-primary-200 transition-all">
+            <div class="text-3xl md:text-4xl font-bold text-primary-600 mb-1">
               <CountUp :end="70" suffix="%" />
             </div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">存储成本下降</div>
+            <div class="text-sm text-gray-500">存储成本下降</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 重点项目 -->
-    <section class="py-16 relative">
+    <section class="py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">
             核心项目
           </h2>
-          <p class="text-gray-600 dark:text-gray-400">
+          <p class="text-gray-600">
             在名通科技、华阳国际主导的重点项目
           </p>
         </div>
@@ -74,13 +69,13 @@
     </section>
 
     <!-- 技术亮点 -->
-    <section class="py-16 relative">
+    <section class="py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">
             技术亮点
           </h2>
-          <p class="text-gray-600 dark:text-gray-400">
+          <p class="text-gray-600">
             解决过的复杂技术问题与突破
           </p>
         </div>
@@ -89,7 +84,7 @@
           <div 
             v-for="(highlight, index) in highlights" 
             :key="index"
-            class="glass-card p-8 card-hover group"
+            class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:border-primary-200 transition-all group"
           >
             <div class="relative">
               <div 
@@ -98,10 +93,10 @@
               >
                 {{ highlight.icon }}
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
                 {{ highlight.title }}
               </h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+              <p class="text-gray-600 text-sm leading-relaxed">
                 {{ highlight.desc }}
               </p>
             </div>
@@ -111,10 +106,10 @@
     </section>
 
     <!-- 技术架构 -->
-    <section class="py-16 relative">
+    <section class="py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="glass-card p-8 md:p-12">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+        <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg border border-gray-100">
+          <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">
             技术架构全景
           </h2>
           
@@ -124,11 +119,11 @@
               <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
                 🔭
               </div>
-              <h3 class="font-bold text-gray-900 dark:text-white mb-2">云原生可观测</h3>
+              <h3 class="font-bold text-gray-900 mb-2">云原生可观测</h3>
               <div class="space-y-1">
-                <p class="text-sm text-gray-500 dark:text-gray-400">eBPF / Beyla</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">OTLP / Prometheus</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Grafana / SkyWalking</p>
+                <p class="text-sm text-gray-500">eBPF / Beyla</p>
+                <p class="text-sm text-gray-500">OTLP / Prometheus</p>
+                <p class="text-sm text-gray-500">Grafana / SkyWalking</p>
               </div>
             </div>
             
@@ -137,11 +132,11 @@
               <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
                 ⚡
               </div>
-              <h3 class="font-bold text-gray-900 dark:text-white mb-2">实时计算</h3>
+              <h3 class="font-bold text-gray-900 mb-2">实时计算</h3>
               <div class="space-y-1">
-                <p class="text-sm text-gray-500 dark:text-gray-400">Flink</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Kafka / RocksDB</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">EventTime / Checkpoint</p>
+                <p class="text-sm text-gray-500">Flink</p>
+                <p class="text-sm text-gray-500">Kafka / RocksDB</p>
+                <p class="text-sm text-gray-500">EventTime / Checkpoint</p>
               </div>
             </div>
             
@@ -150,11 +145,11 @@
               <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
                 🗄️
               </div>
-              <h3 class="font-bold text-gray-900 dark:text-white mb-2">数据存储</h3>
+              <h3 class="font-bold text-gray-900 mb-2">数据存储</h3>
               <div class="space-y-1">
-                <p class="text-sm text-gray-500 dark:text-gray-400">MySQL / Redis</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">ElasticSearch / ClickHouse</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">MongoDB / Qdrant</p>
+                <p class="text-sm text-gray-500">MySQL / Redis</p>
+                <p class="text-sm text-gray-500">ElasticSearch / ClickHouse</p>
+                <p class="text-sm text-gray-500">MongoDB / Qdrant</p>
               </div>
             </div>
             
@@ -163,11 +158,11 @@
               <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-3xl text-white">
                 🚀
               </div>
-              <h3 class="font-bold text-gray-900 dark:text-white mb-2">工程效能</h3>
+              <h3 class="font-bold text-gray-900 mb-2">工程效能</h3>
               <div class="space-y-1">
-                <p class="text-sm text-gray-500 dark:text-gray-400">JaCoCo / Java Agent</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">K8s / Docker</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">AI 辅助工具链</p>
+                <p class="text-sm text-gray-500">JaCoCo / Java Agent</p>
+                <p class="text-sm text-gray-500">K8s / Docker</p>
+                <p class="text-sm text-gray-500">AI 辅助工具链</p>
               </div>
             </div>
           </div>
@@ -176,20 +171,21 @@
     </section>
 
     <!-- CTA -->
-    <section class="py-16 relative">
+    <section class="py-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="glass-card p-12 text-center relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full filter blur-3xl"></div>
-          <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary-400/10 rounded-full filter blur-3xl"></div>
+        <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl p-12 text-center text-white shadow-xl shadow-primary-500/30 relative overflow-hidden">
+          <!-- 背景装饰 -->
+          <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
           
           <div class="relative">
-            <h2 class="text-responsive-md font-bold text-gray-900 dark:text-white mb-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
               对我的项目感兴趣？
             </h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto">
+            <p class="text-white/80 mb-8 max-w-lg mx-auto">
               无论是技术交流、项目合作还是工作机会，都欢迎与我联系
             </p>
-            <NuxtLink to="/about" class="btn-glow px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl inline-flex items-center justify-center gap-2">
+            <NuxtLink to="/about" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl shadow-lg hover:bg-gray-50 transition-all hover:-translate-y-0.5">
               <Icon name="ph:hand-waving-bold" class="w-5 h-5" />
               联系我
             </NuxtLink>
@@ -274,37 +270,37 @@ const highlights = [
   {
     title: 'eBPF 无侵入追踪',
     icon: '🔍',
-    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
+    iconBg: 'bg-primary-100 text-primary-600',
     desc: '对接 Beyla 探针开发 OTLP 接收器，实现从内核层到应用层的全链路监控，关键接口 P99 从 500ms 降至 80ms。'
   },
   {
     title: 'Flink 实时计算',
     icon: '⚡',
-    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
+    iconBg: 'bg-primary-100 text-primary-600',
     desc: '设计加盐打散+窗口聚合解决数据倾斜，实现秒级指标统计；RocksDB State Backend 容错，支撑日均百亿级日志处理。'
   },
   {
     title: 'JVM 字节码优化',
     icon: '🧬',
-    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
+    iconBg: 'bg-primary-100 text-primary-600',
     desc: 'Java Agent 运行时轻量级字节码修改替代静态插桩，覆盖率准确性提升至 95%+，降低运行时干扰 30%。'
   },
   {
     title: '高并发架构优化',
     icon: '🚀',
-    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
+    iconBg: 'bg-primary-100 text-primary-600',
     desc: '内存级 Trie 树+布隆过滤器替代数据库查询，单机 QPS 从 5 提升到 5000，实现 1000 倍性能提升。'
   },
   {
     title: '数据库架构治理',
     icon: '🗄️',
-    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
+    iconBg: 'bg-primary-100 text-primary-600',
     desc: 'MongoDB 迁移 ClickHouse 冷热数据分层方案，存储成本下降 70%，内存占用下降 60%，保障业务连续性。'
   },
   {
     title: '工程效能提升',
     icon: '📈',
-    iconBg: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600',
+    iconBg: 'bg-primary-100 text-primary-600',
     desc: 'AI 辅助代码审查与文档生成，效率提升 50%；建立 Git 统计与性能基线监控，制定 Code Review 规范。'
   }
 ]
