@@ -19,7 +19,7 @@
               :key="item.path"
               :to="item.path"
               class="relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300"
-              :class="$route.path === item.path 
+              :class="($route.path === item.path || (item.path !== '/' && $route.path.startsWith(item.path)))
                 ? 'bg-white/20 text-white' 
                 : 'text-white/80 hover:text-white hover:bg-white/10'"
             >
@@ -71,7 +71,7 @@
               :to="item.path"
               @click="mobileMenuOpen = false"
               class="block px-4 py-3 rounded-lg font-medium transition-colors"
-              :class="$route.path === item.path 
+              :class="($route.path === item.path || (item.path !== '/' && $route.path.startsWith(item.path)))
                 ? 'bg-white/20 text-white' 
                 : 'text-white/80 hover:text-white hover:bg-white/10'"
             >
@@ -179,6 +179,7 @@ const navItems = [
   { name: '技术栈', path: '/skills' },
   { name: '博客', path: '/blog' },
   { name: '相册', path: '/gallery' },
+  { name: '工具箱', path: '/tools' },
   { name: '关于我', path: '/about' }
 ]
 

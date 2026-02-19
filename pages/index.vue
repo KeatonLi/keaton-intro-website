@@ -43,6 +43,10 @@
             <Icon name="ph:image-bold" class="w-5 h-5 text-primary-500 group-hover:scale-110 transition-transform" />
             相册
           </NuxtLink>
+          <NuxtLink to="/tools" class="group px-8 py-4 bg-white text-gray-700 font-semibold rounded-xl flex items-center justify-center gap-2 shadow-md border border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all hover:-translate-y-0.5">
+            <Icon name="ph:toolbox-bold" class="w-5 h-5 text-primary-500 group-hover:scale-110 transition-transform" />
+            工具箱
+          </NuxtLink>
         </div>
         
         <!-- 核心数据展示 -->
