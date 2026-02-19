@@ -112,8 +112,8 @@
           <!-- 个人信息卡片 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
             <div class="flex items-start gap-6 mb-6">
-              <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-4xl shadow-lg shadow-primary-500/30">
-                👨‍💻
+              <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-lg shadow-primary-500/30">
+                <img src="/images/gallery/黎博凯相片.jpg" alt="Keaton" class="w-full h-full object-cover" />
               </div>
               <div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-1">Keaton</h3>

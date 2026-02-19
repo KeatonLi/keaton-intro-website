@@ -24,8 +24,8 @@
               <div class="bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-primary-600/5"></div>
                 <div class="relative">
-                  <div class="w-32 h-32 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-6xl shadow-lg shadow-primary-500/30">
-                    👨‍💻
+                  <div class="w-32 h-32 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg shadow-primary-500/30">
+                    <img src="/images/gallery/黎博凯相片.jpg" alt="Keaton" class="w-full h-full object-cover" />
                   </div>
                   <h2 class="text-2xl font-bold text-gray-900 mb-2">Keaton</h2>
                   <p class="text-primary-600 font-medium mb-4">中级 Java 开发工程师</p>
