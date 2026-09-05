@@ -1,0 +1,11 @@
+{
+  "configVersion": 1,
+  "eyebrow": "External writing",
+  "title": "外站文章",
+  "description": "这里仅聚合我发布在其他平台的文章预览与摘要，正文会在对应平台打开。",
+  "articles": [],
+  "emptyState": {
+    "title": "文章入口正在整理",
+    "description": "之后只需要在 data/blog.json 中填写标题、摘要、平台、日期与外链，页面就会自动生成文章卡片。"
+  }
+}

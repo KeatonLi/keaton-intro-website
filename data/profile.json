@@ -1,0 +1,190 @@
+{
+  "configVersion": 1,
+  "site": {
+    "name": "Keaton",
+    "description": "Cloud Native / DevOps / SRE 工程师个人网站",
+    "logo": "/images/brand-logo-mark.png",
+    "navigation": [
+      { "label": "简历", "path": "/#profile" },
+      { "label": "作品集", "path": "/portfolio" },
+      { "label": "博客", "path": "/blog" }
+    ]
+  },
+  "profile": {
+    "name": "Keaton",
+    "chineseName": "黎博凯",
+    "title": "Java / AI-Native 工程师",
+    "location": "深圳，中国",
+    "currentCompany": "安克创新",
+    "email": "li_bo_kai@qq.com",
+    "portrait": "/images/gallery/黎博凯相片.jpg",
+    "summary": "现就职于安克创新，专注 Java 工程、AI-Native 开发与云原生大数据，具备从需求分析、方案设计到生产交付的完整实践。",
+    "about": "毕业于广东海洋大学计算机科学与技术专业，拥有 3 年 Java 后端研发经验。持续实践企业级智能体、研发效能平台、云原生可观测与大数据系统，能够借助 Coding Agent 完成全栈开发、系统集成与独立交付。"
+  },
+  "home": {
+    "eyebrow": "Cloud Native · DevOps · SRE",
+    "headlineLine1": "云原生系统，",
+    "headlineAccent": "可靠、可观测、可演进。",
+    "summary": "用工程化方法连接研发、交付与稳定性：从 Kubernetes 平台和自动化流水线，到可观测数据链路与生产治理，让复杂系统更清晰、更可靠。",
+    "capabilities": [
+      {
+        "id": "cloud-native",
+        "label": "Cloud Native",
+        "title": "云原生技术",
+        "icon": "ph:cube-transparent",
+        "summary": "围绕容器、编排与微服务构建弹性基础设施，让应用具备可移植、可扩展和可治理的运行底座。",
+        "principles": ["容器化交付", "服务治理", "弹性伸缩"],
+        "technologies": ["Kubernetes", "Docker", "Spring Cloud", "Redis"]
+      },
+      {
+        "id": "devops",
+        "label": "Delivery",
+        "title": "DevOps",
+        "icon": "ph:git-branch",
+        "summary": "打通代码、构建、制品与部署链路，把交付过程沉淀为可复用、可校验、可恢复的工程能力。",
+        "principles": ["持续集成", "持续交付", "平台工程"],
+        "technologies": ["GitLab", "Jenkins", "Spring AI", "Agent Workflow"]
+      },
+      {
+        "id": "sre",
+        "label": "Reliability",
+        "title": "SRE",
+        "icon": "ph:pulse",
+        "summary": "用指标、链路、日志和自动化治理生产稳定性，缩短发现、定位与恢复问题的路径。",
+        "principles": ["可观测性", "容量治理", "故障恢复"],
+        "technologies": ["SkyWalking", "Prometheus", "Flink", "ClickHouse"]
+      }
+    ]
+  },
+  "metrics": [
+    { "value": "3 年", "label": "Java 研发" },
+    { "value": "20 亿+", "label": "Span / 日" },
+    { "value": "约 2 TB", "label": "数据 / 日" },
+    { "value": "4 个", "label": "省级客户" }
+  ],
+  "featuredProjectId": "devops-agent",
+  "projects": [
+    {
+      "id": "devops-agent",
+      "icon": "ph:git-branch",
+      "title": "云帆 DevOps 研发效能平台",
+      "period": "2025.03 - 2026",
+      "role": "核心开发",
+      "summary": "面向企业研发效能建设的一体化 DevOps 平台，覆盖代码、构建、制品与 Kubernetes 部署流程，并建设生产级 AI Agent 能力。",
+      "visual": "/images/portfolio/agent-workflow.png",
+      "technologies": ["Java", "Spring Boot", "Spring AI", "GitLab", "Jenkins", "Kubernetes", "Agent Workflow"],
+      "achievements": [
+        "打通 GitLab、Jenkins、制品库与 Kubernetes 工具链，建设流水线智能体，实现配置生成、校验及流水线自动创建与更新",
+        "搭建 Agent Harness，统一 Workflow、Tool、Context 与结构化状态管理，引入结果校验及失败恢复机制",
+        "通过 Multi-Agent 分层分析、按需代码检索、代码证据与覆盖检查，反向生成项目文档集",
+        "将需求、概要设计、详细设计与代码开发编排为多阶段 Workflow，通过结构化 IR 传递规格和状态"
+      ],
+      "metrics": [
+        { "value": "端到端", "label": "研发流程编排" },
+        { "value": "Multi-Agent", "label": "分层分析" },
+        { "value": "可恢复", "label": "任务执行" }
+      ]
+    },
+    {
+      "id": "observability",
+      "icon": "ph:wave-sine",
+      "title": "云眼微服务可观测平台",
+      "period": "2025.03 - 2026",
+      "role": "Java 开发",
+      "summary": "面向微服务与云原生应用的统一可观测平台，基于 SkyWalking 自动发现微服务资产与调用关系，构建 CMDB、服务拓扑、链路和指标统一观测能力。",
+      "visual": "/images/portfolio/observability-platform.png",
+      "technologies": ["Java", "Spring Boot", "SkyWalking", "Prometheus", "Kafka", "Flink", "ClickHouse", "Redis"],
+      "achievements": [
+        "自动识别应用、服务、实例及依赖关系，支撑 CMDB、应用拓扑、调用链查询、性能分析及指标告警",
+        "参与 Kafka → Flink → ClickHouse 核心开发，通过滚动与滑动窗口计算 QPS、TP95/TP99 和平均延迟",
+        "治理 Kafka 积压、Flink 高负载与反压、Checkpoint 异常及 ClickHouse 入库延迟等问题"
+      ],
+      "metrics": [
+        { "value": "20 亿+", "label": "Span / 日" },
+        { "value": "约 2 TB", "label": "数据 / 日" },
+        { "value": "4 个", "label": "省级客户" }
+      ]
+    },
+    {
+      "id": "bim-data",
+      "icon": "ph:buildings",
+      "title": "BIM 算量与造价指标大数据平台",
+      "period": "2023.07 - 2024.12",
+      "role": "核心开发",
+      "summary": "面向建筑造价领域的工程数据检索、指标分析及 BIM 自动算量平台，支持亿级历史工程数据多维度查询。",
+      "visual": "/images/portfolio/bim-data-platform.png",
+      "technologies": ["Java", "Spring Cloud", "MySQL", "Elasticsearch", "MongoDB", "ClickHouse", "Redis", "RabbitMQ"],
+      "achievements": [
+        "基于 Elasticsearch 建设亿级数据多维查询能力，围绕索引设计、复杂查询及检索性能进行优化",
+        "将部分高频业务数据从 MongoDB 迁移至 ClickHouse，并结合 SQL、索引和 Redis 优化查询链路",
+        "推动计算服务无状态化，通过任务规则实现节点动态扩缩容，并引入任务心跳和异常告警机制"
+      ],
+      "metrics": [
+        { "value": "亿级", "label": "数据量" },
+        { "value": "73%", "label": "查询效率提升" },
+        { "value": "50%+", "label": "计算时间降低" }
+      ]
+    }
+  ],
+  "workExperience": [
+    {
+      "period": "目前",
+      "company": "安克创新",
+      "logo": "/images/brands/anker-innovations.svg",
+      "title": "研发工程师",
+      "current": true,
+      "details": [
+        "加入安克创新，持续从事工程研发工作",
+        "聚焦 Java、AI-Native 开发与企业级智能体的工程实践"
+      ],
+      "technologies": ["Java", "AI-Native", "Coding Agent"]
+    },
+    {
+      "period": "2025.03 - 2026",
+      "company": "深圳市名通科技股份有限公司",
+      "logo": "/images/brands/mastercom.png",
+      "title": "Java 研发工程师",
+      "current": false,
+      "details": [
+        "云帆 DevOps：负责核心功能研发与系统集成，打通 GitLab、Jenkins、制品库及 Kubernetes 工具链",
+        "智能体工程：搭建 Agent Harness，设计代码逆向理解智能体并主导规格驱动研发智能体落地",
+        "云眼可观测：参与 Kafka → Flink → ClickHouse 实时链路核心开发与生产稳定性治理，支撑 4 个省级客户交付"
+      ],
+      "technologies": ["Java", "Spring AI", "Flink", "ClickHouse", "Kubernetes"]
+    },
+    {
+      "period": "2023.07 - 2024.12",
+      "company": "深圳市华阳国际城市科技有限公司",
+      "logo": "/images/brands/huayang-city-tech.png",
+      "title": "Java 研发工程师",
+      "current": false,
+      "details": [
+        "造价指标与 BIM：累计参与 2 个大版本、30+ 个小版本迭代，完成 150+ 项研发任务",
+        "查询治理：参与慢查询优化与数据迁移，使相关接口平均查询效率提升 73%",
+        "任务调度：推动算量服务无状态化与规则化动态扩容，计算时间降低 50% 以上"
+      ],
+      "technologies": ["Spring Cloud", "Elasticsearch", "MongoDB", "ClickHouse", "RabbitMQ"]
+    }
+  ],
+  "skills": [
+    { "category": "Java 与服务端", "items": ["Java", "Spring Boot", "Spring Cloud", "JVM", "高并发编程", "性能优化"] },
+    { "category": "AI-Native 工程", "items": ["Spring AI", "Agent Harness", "Multi-Agent", "RAG", "Prompt 工程", "Coding Agent"] },
+    { "category": "数据与实时计算", "items": ["Kafka", "Flink", "ClickHouse", "Elasticsearch", "MySQL", "Redis", "MongoDB"] },
+    { "category": "云原生与可观测", "items": ["Kubernetes", "Docker", "SkyWalking", "Prometheus", "Grafana", "eBPF", "OTLP"] }
+  ],
+  "education": [
+    {
+      "period": "2019.09 - 2023.06",
+      "school": "广东海洋大学",
+      "logo": "/images/brands/gdou.png",
+      "degree": "计算机科学与技术（本科）",
+      "description": "数学与计算机学院；主修计算机网络、操作系统、算法与数据结构、数据库原理及应用、C 语言等课程。"
+    }
+  ],
+  "certifications": ["软考中级软件设计师", "英语 CET-4"],
+  "contact": {
+    "heading": "期待与你交流合作。",
+    "description": "如果你有项目合作、技术交流或职位机会，欢迎联系我。",
+    "emailLabel": "发送邮件"
+  }
+}
