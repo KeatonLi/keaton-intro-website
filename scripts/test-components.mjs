@@ -84,6 +84,10 @@ test('Motion mobile navigation opens and closes on route selection', async () =>
   const trigger = page.getByRole('button', { name: '打开导航菜单' });
   await trigger.click();
   const menu = page.getByRole('navigation', { name: '移动端导航' }); await menu.waitFor();
+  await page.waitForFunction(() => {
+    const menu = document.querySelector('nav[aria-label="移动端导航"]');
+    return menu && Number(getComputedStyle(menu).opacity) >= 0.99;
+  });
   assert.equal(await trigger.getAttribute('aria-expanded'), 'true');
   await screenshot(page, 'mobile-menu');
   await menu.getByRole('link', { name: '作品集', exact: true }).click();
