@@ -5,7 +5,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 mb-4">
           <NuxtLink to="/tools" class="text-gray-500 hover:text-primary-600 flex items-center gap-1 text-sm">
-            <Icon name="ph:arrow-left-bold" class="w-4 h-4" />
+            <AppIcon name="ph:arrow-left-bold" class="w-4 h-4" />
             工具箱
           </NuxtLink>
           <span class="text-gray-300">/</span>
@@ -45,21 +45,21 @@
           <!-- 时间戳转日期 -->
           <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
             <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Icon name="ph:clock-clockwise-bold" class="w-5 h-5 text-primary-600" />
+              <AppIcon name="ph:clock-clockwise-bold" class="w-5 h-5 text-primary-600" />
               时间戳转日期
             </h3>
-            
+
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">输入时间戳</label>
                 <div class="flex gap-3">
-                  <input 
+                  <Input
                     v-model="timestampInput"
                     type="text"
                     placeholder="例如: 1704067200"
                     class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none font-mono"
-                  >
-                  <select 
+                  />
+                  <select
                     v-model="timestampUnit"
                     class="px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none"
                   >
@@ -69,19 +69,19 @@
                 </div>
               </div>
 
-              <button 
+              <Button
                 @click="convertTimestampToDate"
                 class="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-medium transition-colors flex items-center justify-center gap-2"
                 :disabled="!timestampInput"
               >
-                <Icon name="ph:arrows-clockwise-bold" class="w-4 h-4" />
+                <AppIcon name="ph:arrows-clockwise-bold" class="w-4 h-4" />
                 转换
-              </button>
+              </Button>
 
               <!-- 转换结果 -->
               <div v-if="timestampResults.length > 0" class="space-y-3 mt-4">
-                <div 
-                  v-for="(result, index) in timestampResults" 
+                <div
+                  v-for="(result, index) in timestampResults"
                   :key="index"
                   class="flex items-center justify-between p-3 bg-gray-50 rounded-xl"
                 >
@@ -89,12 +89,12 @@
                     <p class="text-xs text-gray-500">{{ result.label }}</p>
                     <p class="font-mono text-sm">{{ result.value }}</p>
                   </div>
-                  <button 
+                  <Button
                     @click="copyToClipboard(result.value)"
                     class="p-2 rounded-lg hover:bg-white transition-colors text-gray-500 hover:text-primary-600"
                   >
-                    <Icon name="ph:copy-bold" class="w-4 h-4" />
-                  </button>
+                    <AppIcon name="ph:copy-bold" class="w-4 h-4" />
+                  </Button>
                 </div>
               </div>
             </div>
@@ -103,34 +103,34 @@
           <!-- 日期转时间戳 -->
           <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
             <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Icon name="ph:clock-counter-clockwise-bold" class="w-5 h-5 text-primary-600" />
+              <AppIcon name="ph:clock-counter-clockwise-bold" class="w-5 h-5 text-primary-600" />
               日期转时间戳
             </h3>
-            
+
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">选择日期时间</label>
-                <input 
+                <Input
                   v-model="dateInput"
                   type="datetime-local"
                   step="1"
                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none font-mono"
-                >
+                />
               </div>
 
-              <button 
+              <Button
                 @click="convertDateToTimestamp"
                 class="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-medium transition-colors flex items-center justify-center gap-2"
                 :disabled="!dateInput"
               >
-                <Icon name="ph:arrows-clockwise-bold" class="w-4 h-4" />
+                <AppIcon name="ph:arrows-clockwise-bold" class="w-4 h-4" />
                 转换
-              </button>
+              </Button>
 
               <!-- 转换结果 -->
               <div v-if="dateResults.length > 0" class="space-y-3 mt-4">
-                <div 
-                  v-for="(result, index) in dateResults" 
+                <div
+                  v-for="(result, index) in dateResults"
                   :key="index"
                   class="flex items-center justify-between p-3 bg-gray-50 rounded-xl"
                 >
@@ -138,12 +138,12 @@
                     <p class="text-xs text-gray-500">{{ result.label }}</p>
                     <p class="font-mono text-sm">{{ result.value }}</p>
                   </div>
-                  <button 
+                  <Button
                     @click="copyToClipboard(result.value)"
                     class="p-2 rounded-lg hover:bg-white transition-colors text-gray-500 hover:text-primary-600"
                   >
-                    <Icon name="ph:copy-bold" class="w-4 h-4" />
-                  </button>
+                    <AppIcon name="ph:copy-bold" class="w-4 h-4" />
+                  </Button>
                 </div>
               </div>
             </div>
@@ -153,55 +153,55 @@
         <!-- 常用时间戳参考 -->
         <div class="mt-8 bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <Icon name="ph:star-bold" class="w-5 h-5 text-yellow-500" />
+            <AppIcon name="ph:star-bold" class="w-5 h-5 text-yellow-500" />
             常用时间戳参考
           </h3>
-          
+
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <button 
-              v-for="item in commonTimestamps" 
+            <Button
+              v-for="item in commonTimestamps"
               :key="item.label"
               @click="useCommonTimestamp(item)"
               class="p-4 bg-gray-50 rounded-xl text-left hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-all"
             >
               <p class="text-sm font-medium text-gray-700">{{ item.label }}</p>
               <p class="text-xs text-gray-500 mt-1">{{ item.description }}</p>
-            </button>
+            </Button>
           </div>
         </div>
 
         <!-- 批量转换 -->
         <div class="mt-8 bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <Icon name="ph:list-bold" class="w-5 h-5 text-primary-600" />
+            <AppIcon name="ph:list-bold" class="w-5 h-5 text-primary-600" />
             批量转换
           </h3>
-          
+
           <div class="grid lg:grid-cols-2 gap-6">
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 输入多个时间戳（每行一个）
               </label>
-              <textarea
+              <Textarea
                 v-model="batchInput"
                 placeholder="1704067200&#10;1704153600&#10;1704240000"
                 class="w-full h-[200px] p-4 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none font-mono text-sm resize-none"
-              ></textarea>
+              ></Textarea>
               <div class="flex gap-3 mt-3">
-                <select 
+                <select
                   v-model="batchUnit"
                   class="px-4 py-2 rounded-lg border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none"
                 >
                   <option value="s">秒级</option>
                   <option value="ms">毫秒级</option>
                 </select>
-                <button 
+                <Button
                   @click="batchConvert"
                   class="flex-1 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors"
                   :disabled="!batchInput"
                 >
                   批量转换
-                </button>
+                </Button>
               </div>
             </div>
 
@@ -226,14 +226,14 @@
                   批量转换结果将显示在这里
                 </div>
               </div>
-              <button 
+              <Button
                 v-if="batchResults.length > 0"
                 @click="copyBatchResults"
                 class="w-full mt-3 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg transition-colors flex items-center justify-center gap-2"
               >
-                <Icon name="ph:copy-bold" class="w-4 h-4" />
+                <AppIcon name="ph:copy-bold" class="w-4 h-4" />
                 复制全部结果
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -241,23 +241,23 @@
         <!-- 时区转换 -->
         <div class="mt-8 bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <Icon name="ph:globe-bold" class="w-5 h-5 text-primary-600" />
+            <AppIcon name="ph:globe-bold" class="w-5 h-5 text-primary-600" />
             时区转换
           </h3>
-          
+
           <div class="grid md:grid-cols-3 gap-4">
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">选择时间</label>
-              <input 
+              <Input
                 v-model="timezoneInput"
                 type="datetime-local"
                 step="1"
                 class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none font-mono"
-              >
+              />
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">源时区</label>
-              <select 
+              <select
                 v-model="sourceTimezone"
                 class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none"
               >
@@ -268,7 +268,7 @@
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">目标时区</label>
-              <select 
+              <select
                 v-model="targetTimezone"
                 class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none"
               >
@@ -279,13 +279,13 @@
             </div>
           </div>
 
-          <button 
+          <Button
             @click="convertTimezone"
             class="mt-4 w-full py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-medium transition-colors"
             :disabled="!timezoneInput"
           >
             转换时区
-          </button>
+          </Button>
 
           <div v-if="timezoneResult" class="mt-4 p-4 bg-gray-50 rounded-xl">
             <div class="grid md:grid-cols-2 gap-4">
@@ -306,7 +306,7 @@
     <!-- Toast -->
     <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-2">
       <div v-if="showToast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg flex items-center gap-2 z-50">
-        <Icon :name="toastIcon" class="w-5 h-5" :class="toastIconClass" />
+        <AppIcon :name="toastIcon" class="w-5 h-5" :class="toastIconClass" />
         <span>{{ toastMessage }}</span>
       </div>
     </Transition>
@@ -314,6 +314,10 @@
 </template>
 
 <script setup>
+import Button from '~/components/ui/Button.vue'
+import Textarea from '~/components/ui/Textarea.vue'
+import Input from '~/components/ui/Input.vue'
+
 useHead({
   title: '时间戳转换工具 - Keaton',
   meta: [
@@ -440,7 +444,7 @@ const getMonthStart = () => {
 onMounted(() => {
   updateCurrentTime()
   setInterval(updateCurrentTime, 1000)
-  
+
   // 设置默认日期为当前时间
   const now = new Date()
   dateInput.value = formatForInput(now)
@@ -469,7 +473,7 @@ const convertTimestampToDate = () => {
 
   const ms = timestampUnit.value === 's' ? timestamp * 1000 : timestamp
   const date = new Date(ms)
-  
+
   if (isNaN(date.getTime())) {
     showMessage('无效的时间戳', 'ph:x-circle-bold', 'text-red-400')
     return
@@ -556,15 +560,15 @@ const convertTimezone = () => {
 
   try {
     const date = new Date(timezoneInput.value)
-    
+
     // 获取源时区偏移
     const sourceOffset = getTimezoneOffset(date, sourceTimezone.value)
     const targetOffset = getTimezoneOffset(date, targetTimezone.value)
-    
+
     // 计算目标时间
     const offsetDiff = (targetOffset - sourceOffset) * 60000 // 转换为毫秒
     const targetDate = new Date(date.getTime() + offsetDiff)
-    
+
     timezoneResult.value = formatDateTime(targetDate)
     showMessage('时区转换成功')
   } catch (error) {

@@ -33,11 +33,11 @@
           <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
             <NuxtLink to="/#capabilities" class="inline-flex items-center gap-2 rounded-full bg-[#1d4ed8] px-6 py-3.5 text-sm font-medium text-white shadow-[0_12px_28px_rgba(29,78,216,0.24)] transition-transform hover:-translate-y-0.5">
               查看技术能力
-              <Icon name="ph:arrow-down" class="h-4 w-4" />
+              <AppIcon name="ph:arrow-down" class="h-4 w-4" />
             </NuxtLink>
             <NuxtLink to="/#profile" class="inline-flex items-center gap-2 rounded-full border border-white/90 bg-white/66 px-6 py-3.5 text-sm font-medium text-black/72 shadow-[0_10px_28px_rgba(30,41,59,0.08)] backdrop-blur-2xl transition-colors hover:bg-white/90">
               完整简历
-              <Icon name="ph:arrow-up-right" class="h-4 w-4" />
+              <AppIcon name="ph:arrow-up-right" class="h-4 w-4" />
             </NuxtLink>
           </div>
 
@@ -66,7 +66,7 @@
           <article v-for="capability in config.home.capabilities" :key="capability.id" class="group flex min-h-[430px] flex-col rounded-[32px] border border-white/90 bg-white/72 p-7 shadow-[0_18px_48px_rgba(57,75,105,0.07)] backdrop-blur-2xl transition-transform duration-300 hover:-translate-y-1 sm:p-8">
             <div class="flex items-start justify-between gap-4">
               <div class="flex h-14 w-14 items-center justify-center rounded-[18px] bg-[#e8eefb] text-[#1d4ed8] shadow-inner ring-1 ring-white">
-                <Icon :name="capability.icon" class="h-7 w-7" />
+                <AppIcon :name="capability.icon" class="h-7 w-7" />
               </div>
               <span class="rounded-full bg-[#eff3f8] px-3 py-1.5 text-xs font-medium text-black/45">{{ capability.label }}</span>
             </div>
@@ -94,7 +94,7 @@
           <p class="mx-auto mt-5 max-w-xl text-base leading-8 text-black/55">{{ config.contact.description }}</p>
           <a :href="`mailto:${config.profile.email}`" class="mt-8 inline-flex items-center gap-2 rounded-full bg-[#1d4ed8] px-6 py-3 text-sm font-medium text-white shadow-[0_12px_28px_rgba(29,78,216,0.22)] transition-transform hover:-translate-y-0.5">
             {{ config.contact.emailLabel }}
-            <Icon name="ph:arrow-up-right" class="h-4 w-4" />
+            <AppIcon name="ph:arrow-up-right" class="h-4 w-4" />
           </a>
         </div>
       </div>

@@ -5,7 +5,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 mb-4">
           <NuxtLink to="/tools" class="text-gray-500 hover:text-primary-600 flex items-center gap-1 text-sm">
-            <Icon name="ph:arrow-left-bold" class="w-4 h-4" />
+            <AppIcon name="ph:arrow-left-bold" class="w-4 h-4" />
             工具箱
           </NuxtLink>
           <span class="text-gray-300">/</span>
@@ -29,8 +29,8 @@
             <!-- 源格式 -->
             <div class="flex-1 w-full">
               <label class="block text-sm font-medium text-gray-700 mb-2">源格式</label>
-              <select 
-                v-model="sourceFormat" 
+              <select
+                v-model="sourceFormat"
                 class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none"
               >
                 <option value="json">JSON</option>
@@ -43,18 +43,18 @@
             </div>
 
             <!-- 交换按钮 -->
-            <button 
+            <Button
               @click="swapFormats"
               class="p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors mt-6"
             >
-              <Icon name="ph:swap-bold" class="w-5 h-5 text-gray-600" />
-            </button>
+              <AppIcon name="ph:swap-bold" class="w-5 h-5 text-gray-600" />
+            </Button>
 
             <!-- 目标格式 -->
             <div class="flex-1 w-full">
               <label class="block text-sm font-medium text-gray-700 mb-2">目标格式</label>
-              <select 
-                v-model="targetFormat" 
+              <select
+                v-model="targetFormat"
                 class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none"
               >
                 <option value="json">JSON</option>
@@ -70,30 +70,30 @@
 
         <!-- 操作按钮 -->
         <div class="flex flex-wrap gap-3 mb-6">
-          <button 
-            @click="convert" 
+          <Button
+            @click="convert"
             class="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg flex items-center gap-2 transition-colors"
             :disabled="!inputText"
           >
-            <Icon name="ph:arrows-clockwise-bold" class="w-4 h-4" />
+            <AppIcon name="ph:arrows-clockwise-bold" class="w-4 h-4" />
             转换
-          </button>
+          </Button>
           <div class="flex-1"></div>
-          <button 
-            @click="clearAll" 
+          <Button
+            @click="clearAll"
             class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg flex items-center gap-2 transition-colors"
           >
-            <Icon name="ph:trash-bold" class="w-4 h-4" />
+            <AppIcon name="ph:trash-bold" class="w-4 h-4" />
             清空
-          </button>
-          <button 
-            @click="copyResult" 
+          </Button>
+          <Button
+            @click="copyResult"
             class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg flex items-center gap-2 transition-colors"
             :disabled="!outputText"
           >
-            <Icon name="ph:copy-bold" class="w-4 h-4" />
+            <AppIcon name="ph:copy-bold" class="w-4 h-4" />
             复制结果
-          </button>
+          </Button>
         </div>
 
         <!-- 输入输出区域 -->
@@ -102,24 +102,24 @@
           <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
             <div class="px-4 py-3 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <Icon name="ph:upload-simple-bold" class="w-4 h-4 text-gray-500" />
+                <AppIcon name="ph:upload-simple-bold" class="w-4 h-4 text-gray-500" />
                 <span class="text-sm font-medium text-gray-700">输入 ({{ formatLabels[sourceFormat] }})</span>
               </div>
               <span class="text-xs text-gray-400">{{ inputStats }}</span>
             </div>
-            <textarea
+            <Textarea
               v-model="inputText"
               :placeholder="getPlaceholder(sourceFormat)"
               class="w-full h-[400px] p-4 font-mono text-sm resize-none focus:outline-none"
               spellcheck="false"
-            ></textarea>
+            ></Textarea>
           </div>
 
           <!-- 输出 -->
           <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
             <div class="px-4 py-3 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <Icon name="ph:download-simple-bold" class="w-4 h-4 text-gray-500" />
+                <AppIcon name="ph:download-simple-bold" class="w-4 h-4 text-gray-500" />
                 <span class="text-sm font-medium text-gray-700">输出 ({{ formatLabels[targetFormat] }})</span>
               </div>
               <div class="flex items-center gap-2">
@@ -127,21 +127,21 @@
                 <span class="text-xs text-gray-400">{{ outputStats }}</span>
               </div>
             </div>
-            <textarea
+            <Textarea
               v-model="outputText"
               readonly
               placeholder="转换结果将显示在这里..."
               class="w-full h-[400px] p-4 font-mono text-sm resize-none focus:outline-none bg-gray-50"
               :class="errorMessage ? 'text-red-600' : ''"
               spellcheck="false"
-            ></textarea>
+            ></Textarea>
           </div>
         </div>
 
         <!-- 格式说明 -->
         <div class="mt-6 bg-blue-50 rounded-2xl p-6 border border-blue-100">
           <h3 class="text-sm font-medium text-blue-900 mb-3 flex items-center gap-2">
-            <Icon name="ph:info-bold" class="w-4 h-4" />
+            <AppIcon name="ph:info-bold" class="w-4 h-4" />
             {{ formatLabels[sourceFormat] }} 格式说明
           </h3>
           <p class="text-blue-700 text-sm">{{ getFormatDescription(sourceFormat) }}</p>
@@ -150,18 +150,18 @@
         <!-- 示例 -->
         <div class="mt-6 bg-gray-50 rounded-2xl p-6 border border-gray-200">
           <h3 class="text-sm font-medium text-gray-700 mb-4 flex items-center gap-2">
-            <Icon name="ph:lightbulb-bold" class="w-4 h-4 text-yellow-500" />
+            <AppIcon name="ph:lightbulb-bold" class="w-4 h-4 text-yellow-500" />
             示例数据
           </h3>
           <div class="flex flex-wrap gap-3">
-            <button 
-              v-for="example in getExamples()" 
+            <Button
+              v-for="example in getExamples()"
               :key="example.name"
-              @click="loadExample(example)" 
+              @click="loadExample(example)"
               class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-600 hover:text-primary-600 hover:border-primary-300 border border-gray-200 transition-colors"
             >
               {{ example.label }}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -170,7 +170,7 @@
     <!-- Toast -->
     <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-2">
       <div v-if="showToast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg flex items-center gap-2 z-50">
-        <Icon :name="toastIcon" class="w-5 h-5" :class="toastIconClass" />
+        <AppIcon :name="toastIcon" class="w-5 h-5" :class="toastIconClass" />
         <span>{{ toastMessage }}</span>
       </div>
     </Transition>
@@ -178,6 +178,9 @@
 </template>
 
 <script setup>
+import Button from '~/components/ui/Button.vue'
+import Textarea from '~/components/ui/Textarea.vue'
+
 useHead({
   title: 'JSON 格式转换 - Keaton',
   meta: [
@@ -266,7 +269,7 @@ const convert = () => {
   try {
     // 先解析源格式为 JavaScript 对象
     let data = parseInput(inputText.value, sourceFormat.value)
-    
+
     // 再转换为目标格式
     outputText.value = stringifyOutput(data, targetFormat.value)
     showMessage('转换成功')
@@ -321,23 +324,23 @@ const parseYAML = (text) => {
   const result = {}
   let current = result
   const stack = []
-  
+
   for (const line of lines) {
     if (!line.trim() || line.trim().startsWith('#')) continue
-    
+
     const indent = line.search(/\S/)
     const content = line.trim()
-    
+
     if (content.includes(':')) {
       const [key, ...valueParts] = content.split(':')
       const value = valueParts.join(':').trim()
-      
+
       // 处理缩进层级
       while (stack.length > 0 && stack[stack.length - 1].indent >= indent) {
         stack.pop()
         current = stack.length > 0 ? stack[stack.length - 1].obj : result
       }
-      
+
       if (value === '') {
         // 子对象
         current[key] = {}
@@ -349,7 +352,7 @@ const parseYAML = (text) => {
       }
     }
   }
-  
+
   return result
 }
 
@@ -368,7 +371,7 @@ const parseYAMLValue = (value) => {
 const stringifyYAML = (data, indent = 0) => {
   const spaces = '  '.repeat(indent)
   let result = ''
-  
+
   for (const [key, value] of Object.entries(data)) {
     if (value === null) {
       result += `${spaces}${key}: null\n`
@@ -389,7 +392,7 @@ const stringifyYAML = (data, indent = 0) => {
       result += `${spaces}${key}: ${value}\n`
     }
   }
-  
+
   return result
 }
 
@@ -397,7 +400,7 @@ const stringifyYAML = (data, indent = 0) => {
 const parseXML = (text) => {
   const parser = new DOMParser()
   const xmlDoc = parser.parseFromString(text, 'text/xml')
-  
+
   const parseNode = (node) => {
     if (node.nodeType === Node.TEXT_NODE) {
       const text = node.textContent.trim()
@@ -409,22 +412,22 @@ const parseXML = (text) => {
       if (text === 'false') return false
       return text
     }
-    
+
     if (node.nodeType === Node.ELEMENT_NODE) {
       const result = {}
-      
+
       // 处理属性
       if (node.attributes) {
         for (const attr of node.attributes) {
           result[`@${attr.name}`] = attr.value
         }
       }
-      
+
       // 处理子节点
-      const childNodes = Array.from(node.childNodes).filter(n => 
+      const childNodes = Array.from(node.childNodes).filter(n =>
         n.nodeType === Node.ELEMENT_NODE || (n.nodeType === Node.TEXT_NODE && n.textContent.trim())
       )
-      
+
       if (childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE) {
         const textValue = parseNode(childNodes[0])
         if (Object.keys(result).length === 0) {
@@ -435,7 +438,7 @@ const parseXML = (text) => {
         for (const child of childNodes) {
           const childResult = parseNode(child)
           if (childResult === null) continue
-          
+
           if (child.nodeType === Node.ELEMENT_NODE) {
             if (result[child.nodeName]) {
               if (!Array.isArray(result[child.nodeName])) {
@@ -448,13 +451,13 @@ const parseXML = (text) => {
           }
         }
       }
-      
+
       return Object.keys(result).length > 0 ? result : ''
     }
-    
+
     return null
   }
-  
+
   const root = xmlDoc.documentElement
   const result = {}
   result[root.nodeName] = parseNode(root)
@@ -470,14 +473,14 @@ const stringifyXML = (data, rootName = 'root') => {
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
   }
-  
+
   const toXML = (obj, name) => {
     if (obj === null) return `<${name}></${name}>`
     if (typeof obj !== 'object') return `<${name}>${escapeXML(obj)}</${name}>`
-    
+
     let attrs = ''
     let content = ''
-    
+
     for (const [key, value] of Object.entries(obj)) {
       if (key.startsWith('@')) {
         attrs += ` ${key.slice(1)}="${escapeXML(value)}"`
@@ -493,16 +496,16 @@ const stringifyXML = (data, rootName = 'root') => {
         content += toXML(value, key)
       }
     }
-    
+
     return `<${name}${attrs}>${content}</${name}>`
   }
-  
+
   const entries = Object.entries(data)
   if (entries.length === 1) {
     const [key, value] = entries[0]
     return `<?xml version="1.0" encoding="UTF-8"?>\n${toXML(value, key)}`
   }
-  
+
   return `<?xml version="1.0" encoding="UTF-8"?>\n${toXML(data, rootName)}`
 }
 
@@ -510,10 +513,10 @@ const stringifyXML = (data, rootName = 'root') => {
 const parseCSV = (text) => {
   const lines = text.split('\n').filter(line => line.trim())
   if (lines.length < 2) throw new Error('CSV 至少需要标题行和一行数据')
-  
+
   const headers = parseCSVLine(lines[0])
   const result = []
-  
+
   for (let i = 1; i < lines.length; i++) {
     const values = parseCSVLine(lines[i])
     const obj = {}
@@ -522,7 +525,7 @@ const parseCSV = (text) => {
     })
     result.push(obj)
   }
-  
+
   return result
 }
 
@@ -530,10 +533,10 @@ const parseCSVLine = (line) => {
   const result = []
   let current = ''
   let inQuotes = false
-  
+
   for (let i = 0; i < line.length; i++) {
     const char = line[i]
-    
+
     if (char === '"') {
       if (inQuotes && line[i + 1] === '"') {
         current += '"'
@@ -548,7 +551,7 @@ const parseCSVLine = (line) => {
       current += char
     }
   }
-  
+
   result.push(current.trim())
   return result
 }
@@ -558,9 +561,9 @@ const stringifyCSV = (data) => {
   if (!Array.isArray(data)) {
     throw new Error('CSV 输出需要数组格式')
   }
-  
+
   if (data.length === 0) return ''
-  
+
   const headers = Object.keys(data[0])
   const escapeCSV = (str) => {
     const s = String(str)
@@ -569,13 +572,13 @@ const stringifyCSV = (data) => {
     }
     return s
   }
-  
+
   let result = headers.map(escapeCSV).join(',') + '\n'
-  
+
   for (const row of data) {
     result += headers.map(h => escapeCSV(row[h] || '')).join(',') + '\n'
   }
-  
+
   return result.trim()
 }
 
@@ -583,16 +586,16 @@ const stringifyCSV = (data) => {
 const parseProperties = (text) => {
   const result = {}
   const lines = text.split('\n')
-  
+
   for (const line of lines) {
     const trimmed = line.trim()
     if (!trimmed || trimmed.startsWith('#')) continue
-    
+
     const equalIndex = trimmed.indexOf('=')
     if (equalIndex > 0) {
       const key = trimmed.substring(0, equalIndex).trim()
       const value = trimmed.substring(equalIndex + 1).trim()
-      
+
       // 处理嵌套属性
       const keys = key.split('.')
       let current = result
@@ -603,17 +606,17 @@ const parseProperties = (text) => {
       current[keys[keys.length - 1]] = value
     }
   }
-  
+
   return result
 }
 
 // Properties 序列化
 const stringifyProperties = (data, prefix = '') => {
   let result = ''
-  
+
   for (const [key, value] of Object.entries(data)) {
     const fullKey = prefix ? `${prefix}.${key}` : key
-    
+
     if (value === null) {
       result += `${fullKey}=\n`
     } else if (typeof value === 'object' && !Array.isArray(value)) {
@@ -622,7 +625,7 @@ const stringifyProperties = (data, prefix = '') => {
       result += `${fullKey}=${value}\n`
     }
   }
-  
+
   return result
 }
 
@@ -631,16 +634,16 @@ const parseTOML = (text) => {
   const result = {}
   let current = result
   const lines = text.split('\n')
-  
+
   for (const line of lines) {
     const trimmed = line.trim()
     if (!trimmed || trimmed.startsWith('#')) continue
-    
+
     // 处理表头 [section] 或 [[array]]
     if (trimmed.startsWith('[')) {
       const section = trimmed.replace(/\[\[?|\]\]?/g, '')
       current = {}
-      
+
       if (trimmed.startsWith('[[')) {
         // 数组表
         if (!result[section]) result[section] = []
@@ -663,7 +666,7 @@ const parseTOML = (text) => {
       current[key] = parseTOMLValue(value)
     }
   }
-  
+
   return result
 }
 
@@ -703,12 +706,12 @@ const stringifyTOML = (data) => {
     }
     return String(value)
   }
-  
+
   const processObject = (obj, prefix = '') => {
     let result = ''
     const simple = {}
     const complex = {}
-    
+
     for (const [key, value] of Object.entries(obj)) {
       if (value === null || typeof value !== 'object' || Array.isArray(value)) {
         simple[key] = value
@@ -716,21 +719,21 @@ const stringifyTOML = (data) => {
         complex[key] = value
       }
     }
-    
+
     // 先输出简单值
     for (const [key, value] of Object.entries(simple)) {
       result += `${key} = ${formatValue(value)}\n`
     }
-    
+
     // 再输出复杂值
     for (const [key, value] of Object.entries(complex)) {
       const fullKey = prefix ? `${prefix}.${key}` : key
       result += `\n[${fullKey}]\n${processObject(value, fullKey)}`
     }
-    
+
     return result
   }
-  
+
   return processObject(data)
 }
 
@@ -743,7 +746,7 @@ const clearAll = () => {
 
 const copyResult = () => {
   if (!outputText.value) return
-  
+
   navigator.clipboard.writeText(outputText.value).then(() => {
     showMessage('复制成功')
   }).catch(() => {

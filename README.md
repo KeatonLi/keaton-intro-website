@@ -2,6 +2,8 @@
 
 一个基于 **Nuxt 3** + **Nuxt Content** 构建的现代化个人博客和作品集网站，展示 Java 工程师 Keaton 的技术背景、项目经验和技术博客。
 
+基础控件已接入 shadcn-vue / Reka，并适配 Nova 风格尺寸与焦点；[组件范围、来源和截图](docs/frontend-components.md)。
+
 ## 🚀 技术栈
 
 | 技术 | 用途 | 版本 |

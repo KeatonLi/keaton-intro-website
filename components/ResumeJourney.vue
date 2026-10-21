@@ -89,7 +89,7 @@
           <article v-for="project in config.projects" :key="project.id" class="overflow-hidden rounded-[32px] border border-white/90 bg-white/70 p-5 shadow-[0_20px_55px_rgba(57,75,105,0.08)] backdrop-blur-2xl sm:p-8">
             <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div class="flex items-start gap-4">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-[#e6efff] text-[#3166c7] ring-1 ring-white"><Icon :name="project.icon" class="h-7 w-7" /></div>
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-[#e6efff] text-[#3166c7] ring-1 ring-white"><AppIcon :name="project.icon" class="h-7 w-7" /></div>
                 <div><h3 class="text-2xl font-semibold tracking-[-0.025em]">{{ project.title }}</h3><p class="mt-2 text-sm text-black/45">{{ project.role }}</p></div>
               </div>
               <p class="shrink-0 text-sm text-black/42">{{ project.period }}</p>

@@ -2,7 +2,7 @@
   <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:border-primary-200 transition-all group">
     <div class="grid lg:grid-cols-5 gap-0">
       <!-- 项目封面 -->
-      <div 
+      <div
         class="lg:col-span-2 h-64 lg:h-auto flex items-center justify-center relative overflow-hidden"
         :class="gradient"
       >
@@ -33,8 +33,8 @@
             技术架构
           </h4>
           <div class="flex flex-wrap gap-2">
-            <span 
-              v-for="tech in technologies" 
+            <span
+              v-for="tech in technologies"
               :key="tech"
               class="px-3 py-1.5 rounded-lg bg-primary-50 text-primary-700 text-sm border border-primary-100"
             >
@@ -49,12 +49,12 @@
             核心贡献
           </h4>
           <ul class="space-y-2">
-            <li 
-              v-for="(achievement, i) in achievements" 
+            <li
+              v-for="(achievement, i) in achievements"
               :key="i"
               class="flex items-start gap-2 text-gray-600 text-sm"
             >
-              <Icon name="ph:star-bold" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
+              <AppIcon name="ph:star-bold" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
               <span>{{ achievement }}</span>
             </li>
           </ul>

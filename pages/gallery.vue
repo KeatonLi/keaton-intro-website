@@ -17,17 +17,17 @@
     <section class="py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-center gap-3">
-          <button
+          <Button
             v-for="category in categories"
             :key="category.id"
             @click="activeCategory = category.id"
             class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
-            :class="activeCategory === category.id 
-              ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30' 
+            :class="activeCategory === category.id
+              ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
               : 'bg-white text-gray-600 shadow-md border border-gray-200 hover:border-primary-300'"
           >
             {{ category.name }}
-          </button>
+          </Button>
         </div>
       </div>
     </section>
@@ -78,7 +78,7 @@
               <div class="p-4">
                 <div class="flex items-center justify-between">
                   <span class="text-xs text-gray-500 flex items-center gap-1">
-                    <Icon name="ph:calendar-blank" class="w-3 h-3" />
+                    <AppIcon name="ph:calendar-blank" class="w-3 h-3" />
                     {{ photo.date }}
                   </span>
                   <span class="text-xs px-2 py-1 rounded-full bg-primary-100 text-primary-700">
@@ -101,30 +101,30 @@
           @click="closeLightbox"
         >
           <!-- 关闭按钮 -->
-          <button
+          <Button
             class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
             @click="closeLightbox"
           >
-            <Icon name="ph:x-bold" class="w-6 h-6" />
-          </button>
+            <AppIcon name="ph:x-bold" class="w-6 h-6" />
+          </Button>
 
           <!-- 上一张 -->
-          <button
+          <Button
             v-if="currentPhotoIndex > 0"
             class="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
             @click.stop="prevPhoto"
           >
-            <Icon name="ph:caret-left-bold" class="w-6 h-6" />
-          </button>
+            <AppIcon name="ph:caret-left-bold" class="w-6 h-6" />
+          </Button>
 
           <!-- 下一张 -->
-          <button
+          <Button
             v-if="currentPhotoIndex < filteredPhotos.length - 1"
             class="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
             @click.stop="nextPhoto"
           >
-            <Icon name="ph:caret-right-bold" class="w-6 h-6" />
-          </button>
+            <AppIcon name="ph:caret-right-bold" class="w-6 h-6" />
+          </Button>
 
           <!-- 图片容器 -->
           <div
@@ -141,11 +141,11 @@
               <p class="text-white/80 text-sm mb-2">{{ currentPhoto?.description }}</p>
               <div class="flex items-center gap-4 text-white/60 text-xs">
                 <span class="flex items-center gap-1">
-                  <Icon name="ph:calendar-blank" class="w-3 h-3" />
+                  <AppIcon name="ph:calendar-blank" class="w-3 h-3" />
                   {{ currentPhoto?.date }}
                 </span>
                 <span class="flex items-center gap-1">
-                  <Icon name="ph:tag" class="w-3 h-3" />
+                  <AppIcon name="ph:tag" class="w-3 h-3" />
                   {{ getCategoryName(currentPhoto?.category) }}
                 </span>
               </div>
@@ -163,6 +163,8 @@
 </template>
 
 <script setup>
+import Button from '~/components/ui/Button.vue'
+
 useHead({
   title: '相册 - Keaton',
   meta: [
@@ -248,7 +250,7 @@ const nextPhoto = () => {
 onMounted(() => {
   const handleKeydown = (e) => {
     if (!lightboxOpen.value) return
-    
+
     switch (e.key) {
       case 'Escape':
         closeLightbox()
@@ -261,9 +263,9 @@ onMounted(() => {
         break
     }
   }
-  
+
   window.addEventListener('keydown', handleKeydown)
-  
+
   onUnmounted(() => {
     window.removeEventListener('keydown', handleKeydown)
   })

@@ -28,7 +28,7 @@
             </p>
             <div class="flex items-center gap-2 text-primary-600 text-sm font-medium">
               <span>立即使用</span>
-              <Icon name="ph:arrow-right-bold" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <AppIcon name="ph:arrow-right-bold" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </div>
           </NuxtLink>
 
@@ -43,7 +43,7 @@
             </p>
             <div class="flex items-center gap-2 text-primary-600 text-sm font-medium">
               <span>立即使用</span>
-              <Icon name="ph:arrow-right-bold" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <AppIcon name="ph:arrow-right-bold" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </div>
           </NuxtLink>
 
@@ -58,7 +58,7 @@
             </p>
             <div class="flex items-center gap-2 text-primary-600 text-sm font-medium">
               <span>立即使用</span>
-              <Icon name="ph:arrow-right-bold" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <AppIcon name="ph:arrow-right-bold" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </div>
           </NuxtLink>
 
@@ -73,7 +73,7 @@
             </p>
             <div class="flex items-center gap-2 text-primary-600 text-sm font-medium">
               <span>立即使用</span>
-              <Icon name="ph:arrow-right-bold" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <AppIcon name="ph:arrow-right-bold" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </div>
           </NuxtLink>
 
@@ -106,7 +106,7 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 flex items-start gap-4">
           <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
-            <Icon name="ph:info-bold" class="w-5 h-5 text-blue-600" />
+            <AppIcon name="ph:info-bold" class="w-5 h-5 text-blue-600" />
           </div>
           <div>
             <h4 class="font-medium text-blue-900 mb-1">隐私说明</h4>

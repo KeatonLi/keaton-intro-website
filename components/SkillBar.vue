@@ -2,13 +2,13 @@
   <div class="skill-bar">
     <div class="flex justify-between items-center mb-2">
       <div class="flex items-center gap-2">
-        <Icon v-if="icon" :name="icon" class="w-4 h-4 text-primary-500" />
+        <AppIcon v-if="icon" :name="icon" class="w-4 h-4 text-primary-500" />
         <span class="text-sm font-medium text-gray-700">{{ name }}</span>
       </div>
       <span v-if="showLevel" class="text-xs text-gray-500">{{ levelText }}</span>
     </div>
     <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-      <div 
+      <div
         class="h-full rounded-full transition-all duration-1000 ease-out relative"
         :class="gradientClass"
         :style="{ width: animated ? `${level}%` : '0%' }"

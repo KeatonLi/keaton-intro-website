@@ -19,19 +19,19 @@
           </NuxtLink>
         </nav>
 
-        <button
+        <Button
           class="flex h-9 w-9 items-center justify-center rounded-full bg-white/70 text-black/70 shadow-sm ring-1 ring-black/5 transition-colors hover:bg-white md:hidden"
           type="button"
           :aria-expanded="mobileMenuOpen"
           aria-label="打开导航菜单"
           @click="mobileMenuOpen = !mobileMenuOpen"
         >
-          <Icon :name="mobileMenuOpen ? 'ph:x' : 'ph:list'" class="h-5 w-5" />
-        </button>
+          <AppIcon :name="mobileMenuOpen ? 'ph:x' : 'ph:list'" class="h-5 w-5" />
+        </Button>
       </div>
 
-      <Transition name="menu-fade">
-        <nav v-if="mobileMenuOpen" class="border-t border-white/80 bg-white/82 px-5 py-3 backdrop-blur-2xl md:hidden" aria-label="移动端导航">
+      <AnimatePresence>
+        <motion.nav :initial="{ opacity: 0, y: -6 }" :animate="{ opacity: 1, y: 0 }" :exit="{ opacity: 0, y: -4 }" v-if="mobileMenuOpen" class="border-t border-white/80 bg-white/82 px-5 py-3 backdrop-blur-2xl md:hidden" aria-label="移动端导航">
           <NuxtLink
             v-for="item in config.site.navigation"
             :key="item.path"
@@ -41,8 +41,8 @@
           >
             {{ item.label }}
           </NuxtLink>
-        </nav>
-      </Transition>
+        </motion.nav>
+      </AnimatePresence>
     </header>
 
     <main>
@@ -65,6 +65,9 @@
 </template>
 
 <script setup>
+import { AnimatePresence, motion } from 'motion-v'
+import Button from '~/components/ui/Button.vue'
+
 import config from '~/data/profile.json'
 
 const route = useRoute()

@@ -5,7 +5,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 mb-4">
           <NuxtLink to="/tools" class="text-gray-500 hover:text-primary-600 flex items-center gap-1 text-sm">
-            <Icon name="ph:arrow-left-bold" class="w-4 h-4" />
+            <AppIcon name="ph:arrow-left-bold" class="w-4 h-4" />
             工具箱
           </NuxtLink>
           <span class="text-gray-300">/</span>
@@ -25,30 +25,30 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- 操作按钮栏 -->
         <div class="flex flex-wrap gap-3 mb-6">
-          <button 
-            @click="compareText" 
+          <Button
+            @click="compareText"
             class="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg flex items-center gap-2 transition-colors"
             :disabled="!leftText && !rightText"
           >
-            <Icon name="ph:arrows-left-right-bold" class="w-4 h-4" />
+            <AppIcon name="ph:arrows-left-right-bold" class="w-4 h-4" />
             开始对比
-          </button>
-          <button 
-            @click="swapText" 
+          </Button>
+          <Button
+            @click="swapText"
             class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg flex items-center gap-2 transition-colors"
             :disabled="!leftText && !rightText"
           >
-            <Icon name="ph:swap-bold" class="w-4 h-4" />
+            <AppIcon name="ph:swap-bold" class="w-4 h-4" />
             交换
-          </button>
+          </Button>
           <div class="flex-1"></div>
-          <button 
-            @click="clearAll" 
+          <Button
+            @click="clearAll"
             class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg flex items-center gap-2 transition-colors"
           >
-            <Icon name="ph:trash-bold" class="w-4 h-4" />
+            <AppIcon name="ph:trash-bold" class="w-4 h-4" />
             清空
-          </button>
+          </Button>
         </div>
 
         <!-- 输入区域 -->
@@ -62,12 +62,12 @@
               </div>
               <span class="text-xs text-gray-400">{{ leftStats }}</span>
             </div>
-            <textarea
+            <Textarea
               v-model="leftText"
               placeholder="在此粘贴原文本..."
               class="w-full h-[300px] p-4 font-mono text-sm resize-none focus:outline-none"
               spellcheck="false"
-            ></textarea>
+            ></Textarea>
           </div>
 
           <!-- 右侧文本 -->
@@ -79,12 +79,12 @@
               </div>
               <span class="text-xs text-gray-400">{{ rightStats }}</span>
             </div>
-            <textarea
+            <Textarea
               v-model="rightText"
               placeholder="在此粘贴对比文本..."
               class="w-full h-[300px] p-4 font-mono text-sm resize-none focus:outline-none"
               spellcheck="false"
-            ></textarea>
+            ></Textarea>
           </div>
         </div>
 
@@ -92,7 +92,7 @@
         <div v-if="diffResult.length > 0" class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
           <div class="px-4 py-3 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <Icon name="ph:eye-bold" class="w-4 h-4 text-gray-500" />
+              <AppIcon name="ph:eye-bold" class="w-4 h-4 text-gray-500" />
               <span class="text-sm font-medium text-gray-700">对比结果</span>
             </div>
             <div class="flex items-center gap-4 text-xs">
@@ -117,14 +117,14 @@
                 {{ line.oldLineNum || '-' }}<br>{{ line.newLineNum || '-' }}
               </div>
               <!-- 内容 -->
-              <div 
+              <div
                 class="flex-1 py-2 px-3 font-mono text-sm whitespace-pre-wrap break-all"
                 :class="getDiffClass(line.type)"
               >
                 <!-- 字符级高亮 -->
                 <template v-if="line.chars && line.chars.length > 0">
-                  <span 
-                    v-for="(char, charIndex) in line.chars" 
+                  <span
+                    v-for="(char, charIndex) in line.chars"
                     :key="charIndex"
                     :class="getCharClass(char.type)"
                   >{{ char.text }}</span>
@@ -138,7 +138,7 @@
         <!-- 空状态 -->
         <div v-else class="bg-gray-50 rounded-2xl p-12 text-center border border-dashed border-gray-200">
           <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gray-100 flex items-center justify-center text-3xl text-gray-400">
-            <Icon name="ph:arrows-left-right-bold" class="w-8 h-8" />
+            <AppIcon name="ph:arrows-left-right-bold" class="w-8 h-8" />
           </div>
           <p class="text-gray-500">输入两段文本后点击"开始对比"查看差异</p>
         </div>
@@ -146,28 +146,28 @@
         <!-- 示例数据 -->
         <div class="mt-6 bg-gray-50 rounded-2xl p-6 border border-gray-200">
           <h3 class="text-sm font-medium text-gray-700 mb-4 flex items-center gap-2">
-            <Icon name="ph:lightbulb-bold" class="w-4 h-4 text-yellow-500" />
+            <AppIcon name="ph:lightbulb-bold" class="w-4 h-4 text-yellow-500" />
             示例数据
           </h3>
           <div class="flex flex-wrap gap-3">
-            <button 
-              @click="loadExample('code')" 
+            <Button
+              @click="loadExample('code')"
               class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-600 hover:text-primary-600 hover:border-primary-300 border border-gray-200 transition-colors"
             >
               代码对比
-            </button>
-            <button 
-              @click="loadExample('text')" 
+            </Button>
+            <Button
+              @click="loadExample('text')"
               class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-600 hover:text-primary-600 hover:border-primary-300 border border-gray-200 transition-colors"
             >
               文本对比
-            </button>
-            <button 
-              @click="loadExample('json')" 
+            </Button>
+            <Button
+              @click="loadExample('json')"
               class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-600 hover:text-primary-600 hover:border-primary-300 border border-gray-200 transition-colors"
             >
               JSON 对比
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -176,7 +176,7 @@
     <!-- Toast -->
     <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-2">
       <div v-if="showToast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-gray-900 text-white rounded-xl shadow-lg flex items-center gap-2 z-50">
-        <Icon :name="toastIcon" class="w-5 h-5" :class="toastIconClass" />
+        <AppIcon :name="toastIcon" class="w-5 h-5" :class="toastIconClass" />
         <span>{{ toastMessage }}</span>
       </div>
     </Transition>
@@ -184,6 +184,9 @@
 </template>
 
 <script setup>
+import Button from '~/components/ui/Button.vue'
+import Textarea from '~/components/ui/Textarea.vue'
+
 useHead({
   title: '文本对比工具 - Keaton',
   meta: [
@@ -233,18 +236,18 @@ const compareText = () => {
 
   const leftLines = leftText.value.split('\n')
   const rightLines = rightText.value.split('\n')
-  
+
   const result = []
   let oldLineNum = 0
   let newLineNum = 0
-  
+
   // 简化的 diff 算法
   const maxLen = Math.max(leftLines.length, rightLines.length)
-  
+
   for (let i = 0; i < maxLen; i++) {
     const leftLine = leftLines[i] || ''
     const rightLine = rightLines[i] || ''
-    
+
     if (leftLine === rightLine) {
       // 相同行
       oldLineNum++
@@ -259,7 +262,7 @@ const compareText = () => {
       // 尝试找后续匹配的行
       const nextMatchInRight = rightLines.slice(i + 1).findIndex(l => l === leftLine)
       const nextMatchInLeft = leftLines.slice(i + 1).findIndex(l => l === rightLine)
-      
+
       if (leftLine && nextMatchInRight !== -1 && (nextMatchInLeft === -1 || nextMatchInRight < nextMatchInLeft)) {
         // 添加多行
         for (let j = 0; j <= nextMatchInRight; j++) {
@@ -299,7 +302,7 @@ const compareText = () => {
       }
     }
   }
-  
+
   diffResult.value = result
   showMessage('对比完成')
 }
@@ -307,11 +310,11 @@ const compareText = () => {
 const compareChars = (oldStr, newStr) => {
   const chars = []
   const maxLen = Math.max(oldStr.length, newStr.length)
-  
+
   for (let i = 0; i < maxLen; i++) {
     const oldChar = oldStr[i] || ''
     const newChar = newStr[i] || ''
-    
+
     if (oldChar === newChar) {
       chars.push({ text: newChar, type: 'same' })
     } else {
@@ -323,7 +326,7 @@ const compareChars = (oldStr, newStr) => {
       }
     }
   }
-  
+
   return chars
 }
 
@@ -406,7 +409,7 @@ console.log(result);`
 }`
     }
   }
-  
+
   const example = examples[type]
   if (example) {
     leftText.value = example.left

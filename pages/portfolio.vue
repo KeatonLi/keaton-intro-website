@@ -11,14 +11,14 @@
         <p class="mt-7 max-w-2xl text-base leading-8 text-black/56 sm:text-lg">{{ portfolioConfig.description }}</p>
         <NuxtLink to="/#projects" class="mt-9 inline-flex items-center gap-2 rounded-full bg-[#1d4ed8] px-6 py-3.5 text-sm font-medium text-white shadow-[0_12px_28px_rgba(29,78,216,0.22)] transition-transform hover:-translate-y-0.5">
           先看项目经历
-          <Icon name="ph:arrow-right" class="h-4 w-4" />
+          <AppIcon name="ph:arrow-right" class="h-4 w-4" />
         </NuxtLink>
       </div>
 
       <div class="mt-14 lg:mt-0" aria-hidden="true">
         <div class="mx-auto flex aspect-square max-w-[390px] flex-col items-center justify-center rounded-[42px] border border-white/95 bg-white/55 p-8 text-center shadow-[0_28px_70px_rgba(67,85,120,0.12)] backdrop-blur-2xl">
           <div class="flex h-24 w-24 items-center justify-center rounded-[30px] bg-[#e3ecf9] text-[#3166c7] shadow-inner ring-1 ring-white">
-            <Icon name="ph:squares-four" class="h-12 w-12" />
+            <AppIcon name="ph:squares-four" class="h-12 w-12" />
           </div>
           <p class="mt-8 text-sm font-medium text-black/64">Case studies in progress</p>
           <p class="mt-2 text-xs leading-6 text-black/38">Engineering · Product · Systems</p>

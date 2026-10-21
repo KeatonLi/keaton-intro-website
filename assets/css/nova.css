@@ -1,0 +1,23 @@
+/* Nova control tokens adapted for the existing Tailwind 3/Vue build. */
+@layer components {
+  .nova-button { border: 1px solid transparent; border-radius: .625rem; gap: .375rem; font-size: .875rem; font-weight: 500; cursor: pointer; transition: background-color .12s, color .12s; }
+  .nova-button:focus-visible, .nova-input:focus-visible, .nova-textarea:focus-visible { outline: 2px solid var(--nova-primary); outline-offset: 2px; }
+  .nova-button-default { background: var(--nova-primary); color: white; }
+  .nova-button-default:hover { background: var(--nova-primary-hover); }
+  .nova-button-outline { border-color: var(--nova-border); background: var(--nova-surface); color: var(--nova-ink); }
+  .nova-button-secondary { background: var(--nova-muted); color: var(--nova-ink); }
+  .nova-button-ghost { background: transparent; color: inherit; }
+  .nova-button-ghost:hover, .nova-button-outline:hover { background: var(--nova-muted); }
+  .nova-button-destructive { background: #bd303e1a; color: #bd303e; }
+  .nova-button-link { background: transparent; color: var(--nova-primary); text-decoration: underline; text-underline-offset: 3px; }
+  .nova-button-md { min-height: 32px; padding: .375rem .625rem; }
+  .nova-button-sm { min-height: 28px; padding: .25rem .625rem; font-size: .8125rem; }
+  .nova-button-lg { min-height: 36px; padding: .5rem .75rem; }
+  .nova-button-icon { width: 32px; height: 32px; padding: 0; }
+  .nova-input, .nova-textarea { width: 100%; min-width: 0; border: 1px solid var(--nova-border); border-radius: .625rem; padding: .5rem .625rem; color: var(--nova-ink); background: var(--nova-surface); font: inherit; }
+  .nova-input { min-height: 32px; }
+  .nova-textarea { min-height: 96px; resize: vertical; }
+  .nova-input:disabled, .nova-textarea:disabled { opacity: .5; cursor: not-allowed; }
+}
+:root { --nova-primary: #1d4ed8; --nova-primary-hover: #1749b8; --nova-border: #e2e7f0; --nova-surface: white; --nova-ink: #111114; --nova-muted: #f3f5f9; }
+.dark { --nova-surface: #18181b; --nova-ink: #f5f5f7; --nova-border: #3f3f46; --nova-muted: #27272a; }

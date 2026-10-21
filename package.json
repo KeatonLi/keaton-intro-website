@@ -7,19 +7,29 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test:ui": "node --test scripts/test-components.mjs"
   },
   "dependencies": {
+    "@lucide/vue": "^1.60.0",
     "@nuxt/content": "^2.13.0",
     "@nuxt/icon": "^1.0.0",
     "@nuxtjs/color-mode": "^3.4.0",
     "@nuxtjs/tailwindcss": "^6.12.0",
+    "@vueuse/core": "^15.0.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "motion-v": "^2.8.0",
     "nuxt": "^3.13.0",
+    "reka-ui": "^2.11.0",
+    "tailwind-merge": "^3.7.0",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.2",
-    "@tailwindcss/typography": "^0.5.15"
+    "@tailwindcss/typography": "^0.5.15",
+    "playwright": "^1.64.1",
+    "typescript": "^5.9.3"
   }
 }
